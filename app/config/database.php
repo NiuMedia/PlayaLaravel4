@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => 'pgsql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -65,10 +65,10 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'database',
-			'username' => 'root',
-			'password' => '',
+			'host'     => 'heroku.playaapp.com',
+			'database' => 'PLAYA',
+			'username' => 'djpechi',
+			'password' => 'streamload11',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
