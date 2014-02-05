@@ -4,7 +4,7 @@
 
 		public function __construct() {
    			$this->beforeFilter('csrf', array('on'=>'post'));
-   			$this->beforeFilter('auth', array('only'=>array('getDashboard')));
+   			$this->beforeFilter('auth', array('only'=>array('getAdmin', 'getDashboard')));
 		}
 
  		protected $layout = "main";
@@ -37,9 +37,12 @@
 		}
 
 		public function postSignin() {
-          	if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')))) {
-   				return Redirect::to('users/dashboard')->with('message', 'You are now logged in!');
-			} 
+      if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'admin'))) {
+   				return Redirect::to('users/admin')->with('message', 'You are now logged in!');
+			}
+      elseif(Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'otro'))) {
+          return Redirect::to('users/dashboard')->with('message', 'You are now logged in!');
+      }
 			else {
    				return Redirect::to('users/login')
       			->with('message', 'Your username/password combination was incorrect')
@@ -47,12 +50,12 @@
 			}
 		}
 
-		public function getDashboard() {
-    		$this->layout->content = View::make('users.dashboard');
+		public function getAdmin() {
+    		$this->layout->content = View::make('users.dashboardadmin');
 		}
 
-		public function getDashboardAdmin() {
-    		$this->layout->content = View::make('users.dashboardadmin');
+		public function getDashboard() {
+    		$this->layout->content = View::make('users.dashboard');
 		}
 
 		public function getLogout() {
