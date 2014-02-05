@@ -22,6 +22,7 @@
    				$user->lastname = Input::get('lastname');
    				$user->email = Input::get('email');
    				$user->password = Hash::make(Input::get('password'));
+   				$user->rol = Input::get('rol');
    				$user->save();
  
    				return Redirect::to('users/login')->with('message', 'Thanks for registering!');
@@ -48,6 +49,10 @@
 
 		public function getDashboard() {
     		$this->layout->content = View::make('users.dashboard');
+		}
+
+		public function getDashboardAdmin() {
+    		$this->layout->content = View::make('users.dashboardadmin');
 		}
 
 		public function getLogout() {
