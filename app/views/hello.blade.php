@@ -11,9 +11,9 @@
 		{{ Form::open(array('url'=>'users/signin', 'class'=>'form-signin')) }}
    			<h2 align="center">Login</h2>
    			<div class="form-group">
-            	{{Form::label('username', 'User Name', array('class' => 'col-sm-2 control-label'))}}
+            	{{Form::label('email', 'Email', array('class' => 'col-sm-2 control-label'))}}
             	<div class="col-sm-10">
-            		{{ Form::text('username', null, array('class' => 'form-control', 'style' => 'width: 100%;')) }}
+            		{{ Form::text('email', null, array('class' => 'form-control', 'style' => 'width: 100%;')) }}
             	</div>
             </div><br/>
 

@@ -10,6 +10,7 @@
    {{ Form::text('firstname', null, array('class'=>'input-block-level', 'placeholder'=>'First Name')) }}
    {{ Form::text('lastname', null, array('class'=>'input-block-level', 'placeholder'=>'Last Name')) }}
    {{ Form::text('email', null, array('class'=>'input-block-level', 'placeholder'=>'Email Address')) }}
+   {{ Form::text('username', null, array('class'=>'input-block-level', 'placeholder'=>'User Name')) }}
    {{ Form::password('password', array('class'=>'input-block-level', 'placeholder'=>'Password')) }}
    {{ Form::password('password_confirmation', array('class'=>'input-block-level', 'placeholder'=>'Confirm Password')) }}
    {{ Form::text('rol', null, array('class'=>'input-block-level', 'placeholder'=>'Rol de usuario')) }}
