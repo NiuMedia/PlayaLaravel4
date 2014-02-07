@@ -24,6 +24,7 @@
           $user->username = Input::get('username');
    				$user->password = Hash::make(Input::get('password'));
    				$user->rol = Input::get('rol');
+          $user->status = Input::get('status');
    				$user->save();
  
    				return Redirect::to('users/admin')->with('message', 'Thanks for registering!');
@@ -53,7 +54,7 @@
 
 		public function getAdmin() {
         $users = User::all();
-    		$this->layout->content = View::make('users.dashboardadmin', array('users' => $users));
+    		$this->layout->content = View::make('users.index', array('users' => $users));
 		}
 
 		public function getDashboard() {
@@ -64,6 +65,33 @@
    			Auth::logout();
    			return Redirect::to('users/login')->with('message', 'Your are now logged out!');
 		}
+
+    public function destroy($id){
+      $user = User::find($id);
+      $user->delete();
+
+      Session::flash('message','Successfully deleted the user!');
+      return Redirect::to('users/admin');
+    }
+
+    public function getEdit($id){
+      $user = User::find($id);
+      $this->layout->content = View::make('users.edit', array('user'=>$user));
+    }
+
+    public function edit(){
+      return View::make('users/edit');
+    }
+
+    public function getView($id){
+      $user = User::find($id);
+      $this->layout->content = View::make('users.view', array('user'=>$user));
+    }
+
+    public function view(){
+
+      return View::make('users/view');
+    }
 
 	}
 ?>
