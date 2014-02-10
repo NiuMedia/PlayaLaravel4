@@ -42,7 +42,7 @@
       if (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'admin'))) {
    				return Redirect::to('users/admin')->with('message', 'You are now logged in!');
 			}
-      elseif(Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'user'))) {
+      elseif (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'restaurant'))) {
           return Redirect::to('users/dashboard')->with('message', 'You are now logged in!');
       }
 			else {
