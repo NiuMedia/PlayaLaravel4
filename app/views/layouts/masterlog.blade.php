@@ -11,6 +11,12 @@
         <!-- seccion de CSS -->
         {{ HTML::style('css/bootstrap.css') }}
         {{ HTML::style('css/bootstrap-responsive.css') }}
+        {{ HTML::style('css/main.css') }}
+
+         <!-- seccion de script -->
+        {{ HTML::script('js/jquery.v1.8.3.min.js') }}
+        {{ HTML::script('js/bootstrap/bootstrap.min.js') }}
+        <script src="http://use.edgefonts.net/source-sans-pro:n2,i2,n3,n4,i4,n6,n7,n9.js"></script>
 
         <style>
         @section('styles')
@@ -49,12 +55,20 @@
 
             <!-- Content -->
             @yield('content')
+            <!-- End Content -->
 
         </div>
 
-        <!-- seccion de script -->
-        {{ HTML::script('js/jquery.v1.8.3.min.js') }}
-        {{ HTML::script('js/bootstrap/bootstrap.min.js') }}
+        <!-- End Container -->
+
+        <footer class="site-footer">
+            <div class="footer-in" id="footer-left">
+                Sitio implementado por Niumedia
+            </div>
+            <div class="footer-in" id="footer-right">
+                Playa All Rights Reserved © 2014
+            </div>
+        </footer>
 
     </body>
 </html>
