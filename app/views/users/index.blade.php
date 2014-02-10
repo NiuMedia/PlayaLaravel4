@@ -29,11 +29,11 @@
 					<td>{{$user->username}}</td>
 					<td>{{$user->rol}}</td>
 					<td>{{$user->status}}</td>
-					<td><a class="btn btn-small btn-success" style="width:100%;" href="{{ URL::to('users/view/' . $user->id ) }}">View</a></td>
-					<td><a class="btn btn-small btn-info" style="width:100%;" href="{{ URL::to('users/edit/' . $user->id ) }}">Edit</a></td>
+					<td><a class="btn btn-small btn-success" style="width:100%;" href="{{ URL::to('users/' . $user->id ) }}">View</a></td>
+					<td><a class="btn btn-small btn-info" style="width:100%;" href="{{ URL::to('users/' . $user->id . '/edit' ) }}">Edit</a></td>
 					<td>
-						{{ Form::open(array('url' => 'users/admin/' . $user->id, 'class' => 'pull-right')) }}
-
+						{{ Form::open(array('url' => 'users/' . $user->id, 'class' => 'pull-right' , 'style'=>'width:100%;')) }}
+							{{ Form::hidden('_method', 'DELETE') }}
 							{{ Form::submit('Delete', array('class' => 'btn btn-danger', 'style'=>'width:100%;')) }}
 						{{ Form::close() }}
 					</td>
