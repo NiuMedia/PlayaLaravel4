@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('users.login');
 });
 
 Route::controller('users', 'UserController');
@@ -23,6 +23,7 @@ Route::group(array('prefix' => 'app'), function(){
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
 	Route::resource('types', 'TypeController',
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
+	Route::resource('beaches', 'BeachController');
 // 	Route::controller('users', 'UserController');
 });
 

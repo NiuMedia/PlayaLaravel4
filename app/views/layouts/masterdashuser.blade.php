@@ -11,6 +11,10 @@
         <!-- seccion de CSS -->
         {{ HTML::style('css/bootstrap.css') }}
         {{ HTML::style('css/bootstrap-responsive.css') }}
+        {{ HTML::style('css/main.css') }}
+         <!-- seccion de script -->
+        {{ HTML::script('js/jquery.v1.8.3.min.js') }}
+        {{ HTML::script('js/bootstrap/bootstrap.min.js') }}
 
         <style>
         @section('styles')

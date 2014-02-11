@@ -7,9 +7,9 @@
 
 @section('content')
 
-	<h1>Dashboard Admin</h1>
+	<h1>Admin Dashboard</h1>
 	 
-	<p>Welcome to your Dashboard</p>
+	<p>Welcome to your Dashboard {{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
 	<table class="table table-hover">
 		<thead>
 			<tr>

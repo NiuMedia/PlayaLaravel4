@@ -9,7 +9,7 @@ class UserController extends \BaseController {
 
 	public function __construct() {
       	$this->beforeFilter('csrf', array('on'=>'post'));
-      	$this->beforeFilter('auth', array('only'=>array('index', 'create', 'show', 'edit', 'destroy')));
+      	$this->beforeFilter('auth', array('only'=>array('index', 'create', 'show', 'edit', 'destroy', 'beach')));
   	}
 
   	protected $layout = "main";
@@ -25,6 +25,9 @@ class UserController extends \BaseController {
       	elseif (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'restaurant'))) {
           	return Redirect::to('users/dashboard')->with('message', 'You are now logged in!');
         }
+        elseif (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'beach'))) {
+          	return Redirect::to('app/beaches')->with('message', 'You are now logged in!');
+        }
     	else {
         	return Redirect::to('users/login')
             	->with('message', 'Your username/password combination was incorrect')
@@ -34,6 +37,10 @@ class UserController extends \BaseController {
 
   	public function getDashboard() {
      	$this->layout->content = View::make('users.dashboard');
+  	}
+
+  	public function getBeach() {
+     	$this->layout->content = View::make('beaches.index');
   	}
 
   	public function getLogout() {

@@ -9,7 +9,7 @@ class BeachController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('beaches.index');
 	}
 
 	/**
