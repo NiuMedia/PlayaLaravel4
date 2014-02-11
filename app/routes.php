@@ -37,5 +37,3 @@ Route::group(array('prefix' => 'api'), function() {
 });
 
 
-
-
