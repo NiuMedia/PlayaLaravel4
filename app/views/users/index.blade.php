@@ -15,7 +15,7 @@
 			<tr>
 				<th>Name</th>
 				<th>User name</th>
-				<th>Type</th>
+				<th>Category</th>
 				<th>Status</th>
 				<th></th>
 				<th></th>

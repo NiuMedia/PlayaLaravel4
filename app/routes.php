@@ -21,11 +21,17 @@ Route::controller('users', 'UserController');
 Route::group(array('prefix' => 'app'), function(){
 	Route::resource('users', 'UserController',
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
+	Route::resource('types', 'TypeController',
+	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
 // 	Route::controller('users', 'UserController');
 });
 
+
+//JSON API
 Route::group(array('prefix' => 'api'), function() {
 	Route::resource('users', 'UsersController', 
+		array('only' => array('index')));
+	Route::resource('beaches', 'BeachesController', 
 		array('only' => array('index')));
 });
 

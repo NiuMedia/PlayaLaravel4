@@ -11,6 +11,7 @@
         <!-- seccion de CSS -->
         {{ HTML::style('css/bootstrap.css') }}
         {{ HTML::style('css/bootstrap-responsive.css') }}
+        {{ HTML::style('css/main.css') }}
 
         <style>
         @section('styles')
@@ -39,6 +40,7 @@
                         <ul class="nav navbar-nav">
                             <li>{{ HTML::link('app/users', 'Dashboard') }}</li>
                             <li>{{ HTML::link('app/users/create', 'Register new user') }}</li>
+                            <li>{{ HTML::link('app/types', 'Types') }}</li>
                             <li>{{ HTML::link('users/logout', 'Logout') }}</li>
                         </ul> 
                     </div>

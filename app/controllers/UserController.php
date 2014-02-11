@@ -78,7 +78,7 @@ class UserController extends \BaseController {
           	$user->status = Input::get('status');
    			$user->save();
  
-   			return Redirect::to('app/users')->with('message', 'Thanks for registering!');
+   			return Redirect::to('app/users')->with('message', 'Successfully added');
    		} 
    		else {
       		return Redirect::to('app/users/create')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
@@ -112,7 +112,7 @@ class UserController extends \BaseController {
 		// get the user
 		$user = User::find($id);
 
-		// show the edit form and pass the nerd
+		// show the edit form and pass the type
 		return View::make('users.edit')
 			->with('user', $user);
 	}
