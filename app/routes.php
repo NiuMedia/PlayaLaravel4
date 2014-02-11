@@ -16,8 +16,8 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::controller('users', 'UsersController');
+//Route::controller('users', 'UsersController');
 
-//Route::resource('users', 'UserController');
+Route::resource('users', 'UserController');
 
 
