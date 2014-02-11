@@ -16,8 +16,19 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::controller('users', 'UsersController');
+Route::controller('users', 'UserController');
 
-//Route::resource('users', 'UserController');
+Route::group(array('prefix' => 'app'), function(){
+	Route::resource('users', 'UserController',
+	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
+// 	Route::controller('users', 'UserController');
+});
+
+Route::group(array('prefix' => 'api'), function() {
+	Route::resource('users', 'UsersController', 
+		array('only' => array('index')));
+});
+
+
 
 

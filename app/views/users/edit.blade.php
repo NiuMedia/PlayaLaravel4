@@ -9,7 +9,7 @@
 
 	<h1>Edit {{ $user->firstname }} {{$user->lastname}}</h1>
 	{{ HTML::ul($errors->all()) }}
-	{{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT')) }}
+	{{ Form::model($user, array('route' => array('app.users.update', $user->id), 'method' => 'PUT')) }}
 
 	 <div class="form-group">
         {{ Form::label('firstname', 'First Name') }}

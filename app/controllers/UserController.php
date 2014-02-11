@@ -7,6 +7,40 @@ class UserController extends \BaseController {
 	 * @return Response
 	 */
 
+	public function __construct() {
+      	$this->beforeFilter('csrf', array('on'=>'post'));
+      	$this->beforeFilter('auth', array('only'=>array('index', 'create', 'show', 'edit', 'destroy')));
+  	}
+
+  	protected $layout = "main";
+
+  	public function getLogin() {
+      	$this->layout->content = View::make('users.login');
+  	}
+
+  	public function postSignin() {
+      	if (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'admin'))) {
+        	return Redirect::to('app/users')->with('message', 'You are now logged in!');
+    	}
+      	elseif (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'restaurant'))) {
+          	return Redirect::to('users/dashboard')->with('message', 'You are now logged in!');
+        }
+    	else {
+        	return Redirect::to('users/login')
+            	->with('message', 'Your username/password combination was incorrect')
+            	->withInput();
+    	}
+ 	}
+
+  	public function getDashboard() {
+     	$this->layout->content = View::make('users.dashboard');
+  	}
+
+  	public function getLogout() {
+      	Auth::logout();
+      	return Redirect::to('users/login')->with('message', 'Your are now logged out!');
+  	}
+
 	public function index()
   	{
     	$users = User::all();
@@ -44,10 +78,10 @@ class UserController extends \BaseController {
           	$user->status = Input::get('status');
    			$user->save();
  
-   			return Redirect::to('users')->with('message', 'Thanks for registering!');
+   			return Redirect::to('app/users')->with('message', 'Thanks for registering!');
    		} 
    		else {
-      		return Redirect::to('users/create')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
+      		return Redirect::to('app/users/create')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
    		}
 	}
 
@@ -103,10 +137,10 @@ class UserController extends \BaseController {
           	$user->status = Input::get('status');
    			$user->save();
  
-   			return Redirect::to('users')->with('message', 'Successfully updated!');
+   			return Redirect::to('app/users')->with('message', 'Successfully updated!');
    		} 
    		else {
-      		return Redirect::to('users/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
+      		return Redirect::to('app/users/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
    		}
 	}
 
@@ -123,7 +157,7 @@ class UserController extends \BaseController {
 
 		// redirect
 		Session::flash('message', 'Successfully deleted the user!');
-		return Redirect::to('users');
+		return Redirect::to('app/users');
 	}
 
 }
