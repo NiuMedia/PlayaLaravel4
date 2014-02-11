@@ -1,6 +1,6 @@
 <?php
 
-class UsersController extends \BaseController {
+class BeachesController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Response::json(User::get());
+		return Response::json(Beach::get());
 	}
 
 }

@@ -7,15 +7,15 @@
 
 @section('content')
 
-	<h1>Dashboard Admin</h1>
+	<h1>Admin Dashboard</h1>
 	 
-	<p>Welcome to your Dashboard Admin. You rock!</p>
+	<p>Welcome to your Dashboard {{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
 	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>Name</th>
 				<th>User name</th>
-				<th>Type</th>
+				<th>Category</th>
 				<th>Status</th>
 				<th></th>
 				<th></th>
@@ -29,10 +29,10 @@
 					<td>{{$user->username}}</td>
 					<td>{{$user->rol}}</td>
 					<td>{{$user->status}}</td>
-					<td><a class="btn btn-small btn-success" style="width:100%;" href="{{ URL::to('users/' . $user->id ) }}">View</a></td>
-					<td><a class="btn btn-small btn-info" style="width:100%;" href="{{ URL::to('users/' . $user->id . '/edit' ) }}">Edit</a></td>
+					<td><a class="btn btn-small btn-success" style="width:100%;" href="{{ URL::to('app/users/' . $user->id ) }}">View</a></td>
+					<td><a class="btn btn-small btn-info" style="width:100%;" href="{{ URL::to('app/users/' . $user->id . '/edit' ) }}">Edit</a></td>
 					<td>
-						{{ Form::open(array('url' => 'users/' . $user->id, 'class' => 'pull-right' , 'style'=>'width:100%;')) }}
+						{{ Form::open(array('url' => 'app/users/' . $user->id, 'class' => 'pull-right' , 'style'=>'width:100%;')) }}
 							{{ Form::hidden('_method', 'DELETE') }}
 							{{ Form::submit('Delete', array('class' => 'btn btn-danger', 'style'=>'width:100%;')) }}
 						{{ Form::close() }}

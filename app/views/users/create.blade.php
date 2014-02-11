@@ -7,8 +7,8 @@
    
    @section('content')
 
-      {{ Form::open(array('url'=>'users', 'class'=>'form-signup')) }}
-         <h2 class="form-signup-heading">Register</h2>
+      {{ Form::open(array('url'=>'app/users', 'class'=>'form-signup')) }}
+         <h2 class="form-signup-heading">New User</h2>
          <ul>
             @foreach($errors->all() as $error)
                <li>{{ $error }}</li>

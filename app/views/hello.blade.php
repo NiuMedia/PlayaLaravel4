@@ -8,7 +8,7 @@
 @section('content')
 
     <div class="jumbotron" align="center">
-        {{ Form::open(array('url'=>'users/signin', 'class'=>'form-signin')) }}
+        {{ Form::open(array('url'=>'users', 'class'=>'form-signin')) }}
             <h2 align="center">Login</h2>
             <div class="form-group">
                 {{Form::label('username', 'User Name', array('class' => 'col-sm-2 control-label'))}}
