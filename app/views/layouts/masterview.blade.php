@@ -45,6 +45,7 @@
                             <li>{{ HTML::link('app/users', 'Dashboard',array('class'=>'navbtn')) }}</li>
                             <li>{{ HTML::link('app/users/create', 'Register new user',array('class'=>'navbtn')) }}</li>
                             <li>{{ HTML::link('app/types', 'Types',array('class'=>'navbtn')) }}</li>
+                            <li>{{ HTML::link('app/locations', 'Locations',array('class'=>'navbtn')) }}</li>
                             <li>{{ HTML::link('users/logout', 'Logout',array('class'=>'logout')) }}</li>
                         </ul> 
                     </div>

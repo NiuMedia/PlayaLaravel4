@@ -2,7 +2,7 @@
 
 @section('title')
   @parent
-     :: Types
+     :: Locations
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
 			<h1>Types</h1>
 		</div>
 		<div class="col-md-3">
-			<a class="btn btn-small btn-success" href="{{ URL::to('app/types/create') }}">Create New Type</a>
+			<a class="btn btn-small btn-success" href="{{ URL::to('app/locations/create') }}">Create New Location</a>
 		</div>
 	</div>
 	
@@ -19,19 +19,17 @@
 		<thead>
 			<tr>
 				<th>Name</th>
-				<th>Category</th>
 				<th></th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($types as $type)
+			@foreach($locations as $location)
 				<tr>
-					<td>{{$type->name}}</td>
-					<td>{{$type->category}}</td>
-					<td><a class="btn btn-small btn-info" style="width:100%;" href="{{ URL::to('app/types/' . $type->id . '/edit' ) }}">Edit</a></td>
+					<td>{{$location->name}}</td>
+					<td><a class="btn btn-small btn-info" style="width:100%;" href="{{ URL::to('app/locations/' . $location->id . '/edit' ) }}">Edit</a></td>
 					<td>
-						{{ Form::open(array('url' => 'app/types/' . $type->id, 'class' => 'pull-right' , 'style'=>'width:100%;')) }}
+						{{ Form::open(array('url' => 'app/locations/' . $location->id, 'class' => 'pull-right' , 'style'=>'width:100%;')) }}
 							{{ Form::hidden('_method', 'DELETE') }}
 							{{ Form::submit('Delete', array('class' => 'btn btn-danger', 'style'=>'width:100%;')) }}
 						{{ Form::close() }}
