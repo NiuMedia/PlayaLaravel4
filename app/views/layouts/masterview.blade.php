@@ -13,6 +13,10 @@
         {{ HTML::style('css/bootstrap-responsive.css') }}
         {{ HTML::style('css/main.css') }}
 
+        <!-- seccion de script -->
+        {{ HTML::script('js/jquery.v1.8.3.min.js') }}
+        {{ HTML::script('js/bootstrap/bootstrap.min.js') }}
+
         <style>
         @section('styles')
             body {
@@ -37,11 +41,11 @@
 
                     <!-- Everything you want hidden at 940px or less, place within here -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li>{{ HTML::link('app/users', 'Dashboard') }}</li>
-                            <li>{{ HTML::link('app/users/create', 'Register new user') }}</li>
-                            <li>{{ HTML::link('app/types', 'Types') }}</li>
-                            <li>{{ HTML::link('users/logout', 'Logout') }}</li>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>{{ HTML::link('app/users', 'Dashboard',array('class'=>'navbtn')) }}</li>
+                            <li>{{ HTML::link('app/users/create', 'Register new user',array('class'=>'navbtn')) }}</li>
+                            <li>{{ HTML::link('app/types', 'Types',array('class'=>'navbtn')) }}</li>
+                            <li>{{ HTML::link('users/logout', 'Logout',array('class'=>'logout')) }}</li>
                         </ul> 
                     </div>
                 </div>
@@ -49,16 +53,24 @@
         </div> 
 
         <!-- Container -->
-        <div class="container">
+        <div class="container page-content">
 
             <!-- Content -->
             @yield('content')
+            <!-- End Content -->
 
         </div>
 
-        <!-- seccion de script -->
-        {{ HTML::script('js/jquery.v1.8.3.min.js') }}
-        {{ HTML::script('js/bootstrap/bootstrap.min.js') }}
+        <!-- End Container -->
+
+        <footer class="site-footer">
+            <div class="footer-in" id="footer-left">
+                Sitio implementado por Niumedia
+            </div>
+            <div class="footer-in" id="footer-right">
+                Playa All Rights Reserved © 2014
+            </div>
+        </footer>
 
     </body>
 </html>

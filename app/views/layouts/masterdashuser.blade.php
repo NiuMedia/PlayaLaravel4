@@ -49,16 +49,23 @@
         </div> 
 
         <!-- Container -->
-        <div class="container">
+        <div class="container page-content">
 
             <!-- Content -->
             @yield('content')
+            <!-- End Content -->
 
         </div>
+        <!-- End Container -->
 
-        <!-- seccion de script -->
-        {{ HTML::script('js/jquery.v1.8.3.min.js') }}
-        {{ HTML::script('js/bootstrap/bootstrap.min.js') }}
+        <footer class="site-footer">
+            <div class="footer-in" id="footer-left">
+                Sitio implementado por Niumedia
+            </div>
+            <div class="footer-in" id="footer-right">
+                Playa All Rights Reserved © 2014
+            </div>
+        </footer>
 
     </body>
 </html>

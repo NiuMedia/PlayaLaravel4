@@ -51,7 +51,12 @@ class BeachController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		// get the user
+		$beach = Beach::find($id);
+
+		// show the edit form and pass the type
+		return View::make('beaches.edit')
+			->with('beach', $beach);
 	}
 
 	/**
@@ -62,7 +67,20 @@ class BeachController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$validator = Validator::make(Input::all(), Beach::$rules);
+
+		if ($validator->passes()) {
+      		$beach = Beach::find($id);
+   			$beach->name = Input::get('name');
+   			$beach->address = Input::get('address');
+   			$beach->overview = Input::get('overview');
+   			$beach->save();
+ 
+   			return Redirect::to('app/beaches')->with('message', 'Successfully updated!');
+   		} 
+   		else {
+      		return Redirect::to('app/beaches/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
+   		}
 	}
 
 	/**

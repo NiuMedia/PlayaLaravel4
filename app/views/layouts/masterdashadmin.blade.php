@@ -39,11 +39,11 @@
                     <a class="navbar-brand" href="#">Playa</a>
 
                     <!-- Everything you want hidden at 940px or less, place within here -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li>{{ HTML::link('app/users/create', 'Register new user') }}</li>
-                            <li>{{ HTML::link('app/types', 'Types') }}</li>
-                            <li>{{ HTML::link('users/logout', 'Logout') }}</li>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>{{ HTML::link('app/users/create', 'Register new user',array('class'=>'navbtn')) }}</li>
+                            <li>{{ HTML::link('app/types', 'Types',array('class'=>'navbtn')) }}</li>
+                            <li>{{ HTML::link('users/logout', 'Logout',array('class'=>'logout')) }}</li>
                         </ul> 
                     </div>
                 </div>
@@ -51,7 +51,7 @@
         </div> 
 
         <!-- Container -->
-        <div class="container">
+        <div class="container page-content">
 
             <!-- Content -->
             @yield('content')

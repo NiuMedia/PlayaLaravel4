@@ -55,6 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
+			'unix_socket' => '/Applications/xampp/xamppfiles/var/mysql/mysql.sock',
 			'database'  => 'playa',
 			'username'  => 'root',
 			'password'  => '',

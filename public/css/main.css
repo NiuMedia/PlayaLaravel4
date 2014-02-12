@@ -8,7 +8,6 @@ body {
 }
 
 .form-control{
-	text-align: center;
 	border-radius: 0px;
 	border: none;
 }
@@ -25,22 +24,34 @@ body {
 #btn-login{
 	width: 50%;
 }
+#btn-register{
+	margin-top: 50px;
+	padding: 2em 1em;
+}
 
 .btn {
 	border:none;
 	border-radius: 0px;
 }
-
+.logout:hover{
+	background-color: #d9534f !important;
+}
+.navbtn:hover{
+	background-color: #4FADD9 !important;
+}
 .table{
 	background: rgba(255,255,255,0.7);
 }
 
 .site-footer, .page-wrap:after {
   /* .push must be the same height as footer */
-  height: 50px; 
+  height: 50px;
+  max-height: 75px;
+  overflow: hidden;
 }
 
 .site-footer {
+	clear:both;
 	position: fixed;
 	padding: 1em 1.5em;
 	bottom: 0;
@@ -55,7 +66,6 @@ body {
 	vertical-align: top;
 }
 #footer-right{
-	width: 50%;
 	text-align: right;
 }
 @media only screen and (min-width : 1200px) {
@@ -78,9 +88,17 @@ body {
 	#jumbo-login{
 		margin-top: 0px;
 	}
+	#btn-register{
+		margin: auto auto;
+		padding: 2em 1em;
+		width: 50%;
+	}
 }
 
 @media only screen and (max-width : 767px) {
+	.form-control{
+		text-align: center;
+	}
 	.form-signup, .form-signin {
 		width: 100%;
 		min-width: 100px;
@@ -89,9 +107,19 @@ body {
 	#jumbo-login{
 		margin-top: 0px;
 	}
+	.page-content{
+		margin-bottom: 100px;
+	}
 }
+
 @media only screen and (max-width : 320px) {
 	#img-login{
 		margin-top: 50px;
 	}
+	.footer-in {
+		width: 100%;
+	}
+	#footer-right{
+	text-align: left;
+}
 }
