@@ -14,7 +14,7 @@ class CreateBeachTable extends Migration {
 	{
 		Schema::create('beaches', function(Blueprint $table) {
         {
-			$table->increments('id_beach');
+			$table->increments('id');
 			$table->integer('id_user');
 		   	$table->string('name', 20);
 		   	$table->string('address', 20);

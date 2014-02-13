@@ -14,7 +14,7 @@
                <li>{{ $error }}</li>
             @endforeach
          </ul>
-         <div class="row">
+         <div class="row row-content">
             <div class="col-md-6">
                <div class="form-group">
                   {{ Form::label('firstname', 'First Name', array('class'=>'col-sm-3 control-label') ) }}

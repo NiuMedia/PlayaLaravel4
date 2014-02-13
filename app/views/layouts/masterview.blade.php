@@ -14,45 +14,45 @@
         {{ HTML::style('css/main.css') }}
 
         <!-- seccion de script -->
-        {{ HTML::script('js/jquery.v1.8.3.min.js') }}
-        {{ HTML::script('js/bootstrap/bootstrap.min.js') }}
+        {{ HTML::script('js/jquery-2.1.0.min.js') }}
+        {{ HTML::script('js/bootstrap.min.js') }}
+        <link href='http://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
 
-        <style>
-        @section('styles')
-            body {
-                padding-top: 60px;
-            }
-        @show
-        </style>
     </head>
 
     <body>
+        <div id="img-back"></div>
         <!-- Navbar -->
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <div class="container">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Playa</a>
-
-                    <!-- Everything you want hidden at 940px or less, place within here -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>{{ HTML::link('app/users', 'Dashboard',array('class'=>'navbtn')) }}</li>
-                            <li>{{ HTML::link('app/users/create', 'Register new user',array('class'=>'navbtn')) }}</li>
-                            <li>{{ HTML::link('app/locations', 'Locations',array('class'=>'navbtn')) }}</li>
-                            <li>{{ HTML::link('app/types', 'Types',array('class'=>'navbtn')) }}</li>
-                            <li>{{ HTML::link('app/services', 'Services',array('class'=>'navbtn')) }}</li>
-                            <li>{{ HTML::link('users/logout', 'Logout',array('class'=>'logout')) }}</li>
-                        </ul> 
-                    </div>
-                </div>
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              {{ HTML::image('img/playa.png', $alt = null, $attributes = array('class'=>'navbar-brand','width'=>'80px') ) }}
             </div>
-        </div> 
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>{{ HTML::link('app/users', 'Dashboard',array('class'=>'navbtn')) }}</li>
+                </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li>{{ HTML::link('app/users', 'Dashboard',array('class'=>'navbtn')) }}</li>
+                <li>{{ HTML::link('app/users/create', 'Register new user',array('class'=>'navbtn')) }}</li>
+                <li>{{ HTML::link('app/locations', 'Locations',array('class'=>'navbtn')) }}</li>
+                <li>{{ HTML::link('app/types', 'Types',array('class'=>'navbtn')) }}</li>
+                <li>{{ HTML::link('app/services', 'Services',array('class'=>'navbtn')) }}</li>
+                <li>{{ HTML::link('users/logout', 'Logout',array('class'=>'logout')) }}</li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+        <!-- END Navbar -->
 
         <!-- Container -->
         <div class="container page-content">
@@ -73,6 +73,20 @@
                 Playa All Rights Reserved © 2014
             </div>
         </footer>
-
+        <script type="text/javascript">
+        jQuery.fn.refresh = function() {
+            var s = skrollr.get();
+            if(s) {
+                s.refresh(this);
+            }
+            return this;
+        };
+        var imageFit = function() {
+            windowHeight = $(window).height();
+            $('#img-back').css('height', windowHeight).refresh();
+        };
+        $(document).ready(imageFit);
+        $(window).resize(imageFit);
+    </script>
     </body>
 </html>
