@@ -1,6 +1,6 @@
 <?php
 
-class BeachController extends \BaseController {
+class HotelController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class BeachController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('beaches.index');
+		return View::make('hotels.index');
 	}
 
 	/**
@@ -51,10 +51,11 @@ class BeachController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$beach = Beach::find($id);
-		$type_options = DB::table('types')->where('category', 'beach')->orderBy('name', 'asc')->lists('name','id');
+		// get the user
+		$hotel = Hotel::find($id);
+		$type_options = DB::table('types')->where('category', 'hotel')->orderBy('name', 'asc')->lists('name','id');
 		// show the edit form and pass the type
-		return View::make('beaches.edit', array('beach' => $beach, 'type_options' => $type_options));
+		return View::make('hotels.edit', array('hotel' => $hotel, 'type_options' => $type_options));
 	}
 
 	/**
@@ -65,19 +66,20 @@ class BeachController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$validator = Validator::make(Input::all(), Beach::$rules);
+		$validator = Validator::make(Input::all(), Hotel::$rules);
 
 		if ($validator->passes()) {
-      		$beach = Beach::find($id);
-   			$beach->name = Input::get('name');
-   			$beach->address = Input::get('address');
-   			$beach->overview = Input::get('overview');
-   			$beach->save();
+      		$hotel = Hotel::find($id);
+   			$hotel->name = Input::get('name');
+   			$hotel->street = Input::get('address');
+   			$hotel->overview = Input::get('overview');
+   			$hotel->id_type = Input::get('id_type');
+   			$hotel->save();
  
-   			return Redirect::to('app/beaches')->with('message', 'Successfully updated!');
+   			return Redirect::to('app/hotels')->with('message', 'Successfully updated!');
    		} 
    		else {
-      		return Redirect::to('app/beaches/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
+      		return Redirect::to('app/hotels/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
    		}
 	}
 

@@ -12,7 +12,13 @@ class CreateUsersServicesTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('usersServices', function(Blueprint $table) {
+        {
+			$table->increments('id');
+		   	$table->integer('idusers');
+		   	$table->integer('idservices');
+		   	$table->timestamps();
+		}});
 	}
 
 	/**
@@ -22,7 +28,7 @@ class CreateUsersServicesTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::dropIfExists('usersServices');
 	}
 
 }

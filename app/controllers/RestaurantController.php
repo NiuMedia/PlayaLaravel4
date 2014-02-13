@@ -1,6 +1,6 @@
 <?php
 
-class BeachController extends \BaseController {
+class RestaurantController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class BeachController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('beaches.index');
+		return View::make('restaurants.index');
 	}
 
 	/**
@@ -51,10 +51,12 @@ class BeachController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$beach = Beach::find($id);
-		$type_options = DB::table('types')->where('category', 'beach')->orderBy('name', 'asc')->lists('name','id');
-		// show the edit form and pass the type
-		return View::make('beaches.edit', array('beach' => $beach, 'type_options' => $type_options));
+		// get the beach
+		$restaurant = Restaurant::find($id);
+
+		// show the edit form and pass the beach
+		return View::make('restaurants.edit')
+			->with('restaurant', $restaurant);
 	}
 
 	/**
@@ -65,19 +67,19 @@ class BeachController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$validator = Validator::make(Input::all(), Beach::$rules);
+		$validator = Validator::make(Input::all(), Restaurant::$rules);
 
 		if ($validator->passes()) {
-      		$beach = Beach::find($id);
-   			$beach->name = Input::get('name');
-   			$beach->address = Input::get('address');
-   			$beach->overview = Input::get('overview');
-   			$beach->save();
+      		$restaurant = Restaurant::find($id);
+   			$restaurant->name = Input::get('name');
+   			$restaurant->address = Input::get('address');
+   			$restaurant->overview = Input::get('overview');
+   			$restaurant->save();
  
-   			return Redirect::to('app/beaches')->with('message', 'Successfully updated!');
+   			return Redirect::to('app/restaurants')->with('message', 'Successfully updated!');
    		} 
    		else {
-      		return Redirect::to('app/beaches/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
+      		return Redirect::to('app/restaurants/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
    		}
 	}
 

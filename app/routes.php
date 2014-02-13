@@ -28,6 +28,8 @@ Route::group(array('prefix' => 'app'), function(){
 	Route::resource('locations', 'LocationController',
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
 	Route::resource('beaches', 'BeachController');
+	Route::resource('hotels', 'HotelController');
+	Route::resource('restaurants', 'RestaurantController');
 // 	Route::controller('users', 'UserController');
 });
 
@@ -41,6 +43,10 @@ Route::group(array('prefix' => 'api'), function() {
 	Route::resource('services', 'ServicesController', 
 		array('only' => array('index')));
 	Route::resource('beaches', 'BeachesController', 
+		array('only' => array('index')));
+	Route::resource('hotels', 'HotelsController', 
+		array('only' => array('index')));
+	Route::resource('restaurants', 'RestaurantsController', 
 		array('only' => array('index')));
 });
 

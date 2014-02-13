@@ -22,8 +22,11 @@ class UserController extends \BaseController {
       	if (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'admin'))) {
         	return Redirect::to('app/users')->with('message', 'You are now logged in!');
     	}
-      	elseif (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'restaurant'))) {
-          	return Redirect::to('users/dashboard')->with('message', 'You are now logged in!');
+      	elseif (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'hotel'))) {
+          	return Redirect::to('app/hotels')->with('message', 'You are now logged in!');
+        }
+        elseif (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'restaurant'))) {
+          	return Redirect::to('app/restaurants')->with('message', 'You are now logged in!');
         }
         elseif (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'beach'))) {
           	return Redirect::to('app/beaches')->with('message', 'You are now logged in!');
@@ -89,7 +92,15 @@ class UserController extends \BaseController {
 														'email' => Input::get('email'), 'username' => Input::get('username'),
 														'password' => Hash::make(Input::get('password')), 'rol' => Input::get('rol'),
 														'status' => Input::get('status'),'idlocation' => Input::get('idlocation')));
-   			DB::table('beaches')->insert(array('id_user'=> $id));
+   			if(Input::get('rol') == 'hotel'){
+   				DB::table('hotels')->insert(array('id_user'=> $id));
+   			}
+   			elseif(Input::get('rol') == 'restaurant'){   			
+   				DB::table('restaurants')->insert(array('id_user'=> $id));
+   			}
+   			elseif(Input::get('rol') == 'beach'){   			
+   				DB::table('beaches')->insert(array('id_user'=> $id));
+   			}
  
    			return Redirect::to('app/users')->with('message', 'Successfully added');
    		} 
