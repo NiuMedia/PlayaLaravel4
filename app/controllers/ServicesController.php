@@ -1,6 +1,6 @@
 <?php
 
-class LocationsController extends \BaseController {
+class ServicesController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class LocationsController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Response::json(Location::get());
+		return Response::json(Service::get());
 	}
 
 }

@@ -23,6 +23,8 @@ Route::group(array('prefix' => 'app'), function(){
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
 	Route::resource('types', 'TypeController',
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
+	Route::resource('services', 'ServiceController',
+	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
 	Route::resource('locations', 'LocationController',
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
 	Route::resource('beaches', 'BeachController');
@@ -33,6 +35,10 @@ Route::group(array('prefix' => 'app'), function(){
 //JSON API
 Route::group(array('prefix' => 'api'), function() {
 	Route::resource('users', 'UsersController', 
+		array('only' => array('index')));
+	Route::resource('locations', 'LocationsController', 
+		array('only' => array('index')));
+	Route::resource('services', 'ServicesController', 
 		array('only' => array('index')));
 	Route::resource('beaches', 'BeachesController', 
 		array('only' => array('index')));

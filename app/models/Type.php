@@ -5,7 +5,7 @@
 
 		public static $rules = array(
 	   		'name'=>'required',
-	   		'category'=>'required',
+	   		'category'=>'required'
    		);
 	}
 

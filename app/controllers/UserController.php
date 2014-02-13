@@ -62,7 +62,8 @@ class UserController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('users.create');
+		$location_options = DB::table('locations')->orderBy('name', 'asc')->lists('name','id');
+		return View::make('users.create', array('location_options' => $location_options));
 	}
 
 	/**
@@ -87,7 +88,7 @@ class UserController extends \BaseController {
    			$id = DB::table('users')->insertGetId(array('firstname' => Input::get('firstname'), 'lastname' => Input::get('lastname'),
 														'email' => Input::get('email'), 'username' => Input::get('username'),
 														'password' => Hash::make(Input::get('password')), 'rol' => Input::get('rol'),
-														'status' => Input::get('status'),'idlocation' => Input::get('location')));
+														'status' => Input::get('status'),'idlocation' => Input::get('idlocation')));
    			DB::table('beaches')->insert(array('id_user'=> $id));
  
    			return Redirect::to('app/users')->with('message', 'Successfully added');
@@ -123,10 +124,9 @@ class UserController extends \BaseController {
 	{
 		// get the user
 		$user = User::find($id);
-
+		$location_options = DB::table('locations')->orderBy('name', 'asc')->lists('name','id');
 		// show the edit form and pass the type
-		return View::make('users.edit')
-			->with('user', $user);
+		return View::make('users.edit', array('user' => $user, 'location_options' => $location_options));
 	}
 
 	/**
@@ -146,6 +146,8 @@ class UserController extends \BaseController {
    			$user->email = Input::get('email');
           	$user->username = Input::get('username');
           	$user->status = Input::get('status');
+          	$user->idlocation = Input::get('idlocation');
+          	$user->phone = Input::get('phone');
    			$user->save();
  
    			return Redirect::to('app/users')->with('message', 'Successfully updated!');

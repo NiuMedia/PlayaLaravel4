@@ -77,12 +77,7 @@
                <div class="form-group">
                   {{ Form::label('location', 'Location', array('class'=>'col-sm-3 control-label') ) }}
                   <div class="col-sm-9">
-                     <select class="form-control select-own" name="location" id="location">
-                        <option value='0'>Select a location</option>
-                        @foreach ($locations as $location)
-                           <option value='{{$location->id}}'>{{$location->name}}</option>
-                        @endforeach
-                     </select>
+                     {{ Form::select('idlocation', $location_options , null, array('class' => 'form-control select-own')) }}
                   </div>
                </div>
        

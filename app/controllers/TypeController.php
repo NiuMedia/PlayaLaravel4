@@ -90,7 +90,7 @@ class TypeController extends \BaseController {
    			$type->category = Input::get('category');
    			$type->save();
  
-   			return Redirect::to('app/types')->with('message', 'Succesfully added');
+   			return Redirect::to('app/types')->with('message', 'Succesfully edited');
    		} 
    		else {
       		return Redirect::to('app/types/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  

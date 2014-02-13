@@ -32,22 +32,22 @@
                 </div>
              </div>
             <div class="form-group">
+                {{ Form::label('phone', 'Phone', array('class'=>'col-sm-3 control-label') ) }}
+                <div class="col-sm-9">
+                    {{ Form::text('phone', null, array('class' => 'form-control')) }}
+                </div>
+            </div>
+            <div class="form-group">
                 {{ Form::label('username', 'Username', array('class'=>'col-sm-3 control-label')) }}
                 <div class="col-sm-9">                    
                     {{ Form::text('username', null, array('class' => 'form-control')) }}
                 </div>
-             </div>
-             <?php $locations = DB::table('locations')->get();  ?>
+            </div>
 
             <div class="form-group">
                 {{ Form::label('location', 'Location', array('class'=>'col-sm-3 control-label') ) }}
                 <div class="col-sm-9">
-                    <select class="form-control select-own">
-                        <option value='0'>Select a location</option>
-                        @foreach ($locations as $location)
-                            <option value='{{$location->id}}'>{{$location->name}}</option>
-                        @endforeach
-                    </select>
+                    {{ Form::select('idlocation', $location_options , null, array('class' => 'form-control select-own')) }}
                 </div>
             </div>
             <div class="form-group">

@@ -30,7 +30,14 @@
 					<td>{{$user->username}}</td>
 					<td>{{$user->rol}}</td>
 					<td>{{$user->status}}</td>
-					<td>{{$user->id_location}}</td>
+					<?php 
+					if($user->idlocation != 0){
+						$location = DB::table('locations')->where('id', $user->idlocation)->pluck('name'); 
+					}
+					else
+						$location = '';
+					?>
+					<td>{{$location}}</td>
 					<td><a class="btn btn-small btn-success" style="width:100%;" href="{{ URL::to('app/users/' . $user->id ) }}">View</a></td>
 					<td><a class="btn btn-small btn-info" style="width:100%;" href="{{ URL::to('app/users/' . $user->id . '/edit' ) }}">Edit</a></td>
 					<td>
