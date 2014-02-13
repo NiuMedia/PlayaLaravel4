@@ -23,6 +23,8 @@ Route::group(array('prefix' => 'app'), function(){
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
 	Route::resource('types', 'TypeController',
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
+	Route::resource('locations', 'LocationController',
+	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
 	Route::resource('beaches', 'BeachController');
 // 	Route::controller('users', 'UserController');
 });

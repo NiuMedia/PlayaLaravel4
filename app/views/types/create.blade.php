@@ -2,7 +2,7 @@
 
    @section('title')
       @parent
-         :: Register
+         :: Create type
    @stop
    
    @section('content')

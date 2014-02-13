@@ -75,15 +75,20 @@ class UserController extends \BaseController {
 		$validator = Validator::make(Input::all(), User::$rules);
  
    		if ($validator->passes()) {
-      		$user = new User;
-   			$user->firstname = Input::get('firstname');
-   			$user->lastname = Input::get('lastname');
-   			$user->email = Input::get('email');
-          	$user->username = Input::get('username');
-   			$user->password = Hash::make(Input::get('password'));
-   			$user->rol = Input::get('rol');
-          	$user->status = Input::get('status');
-   			$user->save();
+      // 		$user = new User;
+   			// $user->firstname = Input::get('firstname');
+   			// $user->lastname = Input::get('lastname');
+   			// $user->email = Input::get('email');
+      //     	$user->username = Input::get('username');
+   			// $user->password = Hash::make(Input::get('password'));
+   			// $user->rol = Input::get('rol');
+      //     	$user->status = Input::get('status');
+   			// $user->save();
+   			$id = DB::table('users')->insertGetId(array('firstname' => Input::get('firstname'), 'lastname' => Input::get('lastname'),
+														'email' => Input::get('email'), 'username' => Input::get('username'),
+														'password' => Hash::make(Input::get('password')), 'rol' => Input::get('rol'),
+														'status' => Input::get('status'),'idlocation' => Input::get('location')));
+   			DB::table('beaches')->insert(array('id_user'=> $id));
  
    			return Redirect::to('app/users')->with('message', 'Successfully added');
    		} 
@@ -140,7 +145,6 @@ class UserController extends \BaseController {
    			$user->lastname = Input::get('lastname');
    			$user->email = Input::get('email');
           	$user->username = Input::get('username');
-   			$user->rol = Input::get('rol');
           	$user->status = Input::get('status');
    			$user->save();
  
@@ -161,7 +165,7 @@ class UserController extends \BaseController {
 	{
 		$user = User::find($id);
 		$user->delete();
-
+		DB::table('beaches')->where('id_user', '=', $id)->delete();
 		// redirect
 		Session::flash('message', 'Successfully deleted the user!');
 		return Redirect::to('app/users');

@@ -36,6 +36,13 @@
                      {{ Form::email('email', null, array('class' => 'form-control')) }}
                   </div>
                </div>
+
+               <div class="form-group">
+                  {{ Form::label('phone', 'Phone', array('class'=>'col-sm-3 control-label') ) }}
+                  <div class="col-sm-9">
+                     {{ Form::text('phone', null, array('class' => 'form-control')) }}
+                  </div>
+               </div>
        
                <div class="form-group">
                   {{ Form::label('username', 'Username', array('class'=>'col-sm-3 control-label') ) }}
@@ -47,14 +54,14 @@
                <div class="form-group">
                   {{ Form::label('password', 'Password', array('class'=>'col-sm-3 control-label')  ) }}
                   <div class="col-sm-9">
-                     {{ Form::password('password', array('class' => 'form-control')) }}
+                     {{ Form::password('password', null, array('class' => 'form-control')) }}
                   </div>
                </div>
        
                <div class="form-group">
                   {{ Form::label('password_confirmation', 'Confirm password', array('class'=>'col-sm-3 control-label') ) }}
                   <div class="col-sm-9">
-                     {{ Form::password('password_confirmation', array('class' => 'form-control')) }}
+                     {{ Form::password('password_confirmation', null,  array('class' => 'form-control')) }}
                   </div>
                </div>
        
@@ -62,6 +69,20 @@
                   {{ Form::label('rol', 'Category', array('class'=>'col-sm-3 control-label') ) }}
                   <div class="col-sm-9">
                      {{ Form::select('rol', array('0' => 'Select a category', 'admin' => 'Administrador', 'hotel' => 'Hotel', 'restaurant' => 'Restaurant', 'nightlife' => 'Nightlife', 'shopping' => 'Shopping', 'tour' => 'Tour', 'beach' => 'Beach', 'event' => 'Event', 'transportation' => 'Transportation', 'doctor' => 'Doctor'), null, array('class' => 'form-control select-own')) }}
+                  </div>
+               </div>
+
+               <?php $locations = DB::table('locations')->get();  ?>
+
+               <div class="form-group">
+                  {{ Form::label('location', 'Location', array('class'=>'col-sm-3 control-label') ) }}
+                  <div class="col-sm-9">
+                     <select class="form-control select-own" name="location" id="location">
+                        <option value='0'>Select a location</option>
+                        @foreach ($locations as $location)
+                           <option value='{{$location->id}}'>{{$location->name}}</option>
+                        @endforeach
+                     </select>
                   </div>
                </div>
        

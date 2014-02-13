@@ -37,12 +37,19 @@
                     {{ Form::text('username', null, array('class' => 'form-control')) }}
                 </div>
              </div>
+             <?php $locations = DB::table('locations')->get();  ?>
+
             <div class="form-group">
-                {{ Form::label('rol', 'Category', array('class'=>'col-sm-3 control-label')) }}
-                <div class="col-sm-9">                    
-                    {{ Form::select('rol', array('0' => 'Select a category', 'admin' => 'Administrador', 'hotel' => 'Hotel', 'restaurant' => 'Restaurant', 'nightlife' => 'Nightlife', 'shopping' => 'Shopping', 'tour' => 'Tour', 'beach' => 'Beach', 'event' => 'Event', 'transportation' => 'Transportation', 'doctor' => 'Doctor'), null, array('class' => 'form-control')) }}
+                {{ Form::label('location', 'Location', array('class'=>'col-sm-3 control-label') ) }}
+                <div class="col-sm-9">
+                    <select class="form-control select-own">
+                        <option value='0'>Select a location</option>
+                        @foreach ($locations as $location)
+                            <option value='{{$location->id}}'>{{$location->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
-             </div>
+            </div>
             <div class="form-group">
                 {{ Form::label('status', 'Status', array('class'=>'col-sm-3 control-label')) }}
                 <div class="col-sm-9">                
