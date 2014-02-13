@@ -11,7 +11,7 @@
 {{ HTML::ul($errors->all()) }}
 {{ Form::model($user, array('route' => array('app.users.update', $user->id), 'method' => 'PUT', 'class'=>'form-horizontal')) }}
 
-	<div class="row">
+	<div class="row row-content">
         <div class="col-md-6">
             <div class="form-group">
                 {{ Form::label('firstname', 'First Name', array('class'=>'col-sm-3 control-label')) }}

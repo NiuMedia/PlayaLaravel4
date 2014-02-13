@@ -1,7 +1,56 @@
 body {
-	background-color: #AFE1FA;
+	padding-top: 50px;/*
+	background-image: url("beach.jpg");
+	background-repeat:no-repeat;
+	background-position:center;*/
+	/*background-color: #FFFFFF;*/
+	/*background-color: #AFE1FA;*/
 }
- 
+.panel {
+	background-color: transparent;
+}
+.to-left{
+	max-width: 250px;
+	display: inline-block;
+	vertical-align: top;
+}
+.ocbtn{
+	float: right;
+	width: 18px;
+}
+#img-back{
+	width: 100%;
+	background-image: url("beach.jpg");
+	background-position: bottom;
+	position: fixed;
+	background-attachment:fixed;
+	z-index: -999;
+}
+.navbar-inverse {
+	background-color: #be1e2d;
+	border-color: transparent;
+}
+.navbar-inverse .navbar-nav > li > a {
+	color: #EEEEEE;
+}
+.navbar-inverse .navbar-brand {
+	padding: 12px 15px;
+	color: #EEEEEE;
+}
+.navbar-inverse .navbar-toggle {
+border-color: #FFFFFF;
+background-color: rgb(213, 86, 86);
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+background-color: #FFB0B0;
+}
+#jumbo-login{
+	margin-top: 30px;
+	font-family: 'Actor', sans-serif;
+}
+.page-content{
+	margin-bottom: 100px;
+}
 .form-signup, .form-signin {
 	width: 400px;
 	margin: 0 auto;
@@ -10,6 +59,11 @@ body {
 .form-control{
 	border-radius: 0px;
 	border: none;
+}
+.row-content{
+	padding: 1em;
+	background-color: rgba(255, 255, 255, 0.41);
+	border-radius: 5px;
 }
 
 .container .jumbotron {
@@ -69,6 +123,7 @@ body {
 	text-align: right;
 }
 @media only screen and (min-width : 1200px) {
+
 	#jumbo-login{
 		margin-top: 100px;
 	}
@@ -85,9 +140,6 @@ body {
 		position: absolute;
 		right: 0px;
 	}
-	#jumbo-login{
-		margin-top: 0px;
-	}
 	#btn-register{
 		margin: auto auto;
 		padding: 2em 1em;
@@ -96,6 +148,9 @@ body {
 }
 
 @media only screen and (max-width : 767px) {
+	table{
+		font-size: 12px;
+	}
 	.form-control{
 		text-align: center;
 	}
@@ -103,12 +158,6 @@ body {
 		width: 100%;
 		min-width: 100px;
 		margin: 0 auto;
-	}
-	#jumbo-login{
-		margin-top: 0px;
-	}
-	.page-content{
-		margin-bottom: 100px;
 	}
 }
 
@@ -121,5 +170,5 @@ body {
 	}
 	#footer-right{
 	text-align: left;
-}
+	}
 }

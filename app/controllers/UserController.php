@@ -12,7 +12,7 @@ class UserController extends \BaseController {
       	$this->beforeFilter('auth', array('only'=>array('index', 'create', 'show', 'edit', 'destroy', 'beach')));
   	}
 
-  	protected $layout = "main";
+  	protected $layout = "layouts.masterlog";
 
   	public function getLogin() {
       	$this->layout->content = View::make('users.login');
