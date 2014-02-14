@@ -18,7 +18,7 @@ class CreateServicesTable extends Migration {
 		   	$table->string('name', 20);
 		   	$table->string('category',20);
 		   	$table->string('facilityType',20);
-		   	$table->string('logo',20);
+		   	$table->binary('logo',20);
 		   	$table->timestamps();
 		}});
 	}

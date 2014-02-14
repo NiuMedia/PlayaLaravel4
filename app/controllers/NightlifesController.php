@@ -1,6 +1,6 @@
 <?php
 
-class HotelsController extends \BaseController {
+class NightlifesController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,6 +9,6 @@ class HotelsController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Response::json(Hotel::get());
+		return Response::json(Nightlife::get());
 	}
 }

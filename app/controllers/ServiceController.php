@@ -39,6 +39,7 @@ class ServiceController extends \BaseController {
    			$service->name = Input::get('name');
    			$service->category = Input::get('category');
    			$service->facilityType = Input::get('facilityType');
+   			//falta logo
    			$service->save();
  
    			return Redirect::to('app/services')->with('message', 'Succesfully added');
@@ -90,6 +91,7 @@ class ServiceController extends \BaseController {
    			$service->name = Input::get('name');
    			$service->category = Input::get('category');
    			$service->facilityType = Input::get('facilityType');
+   			//falta logo
    			$service->save();
  
    			return Redirect::to('app/services')->with('message', 'Succesfully edited');

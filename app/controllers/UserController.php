@@ -91,16 +91,31 @@ class UserController extends \BaseController {
    			$id = DB::table('users')->insertGetId(array('firstname' => Input::get('firstname'), 'lastname' => Input::get('lastname'),
 														'email' => Input::get('email'), 'username' => Input::get('username'),
 														'password' => Hash::make(Input::get('password')), 'rol' => Input::get('rol'),
-														'status' => Input::get('status'),'idlocation' => Input::get('idlocation')));
+														'status' => Input::get('status'),'idlocation' => Input::get('idlocation'), 'phone' => Input::get('phone')));
    			if(Input::get('rol') == 'hotel'){
    				DB::table('hotels')->insert(array('id_user'=> $id));
    			}
    			elseif(Input::get('rol') == 'restaurant'){   			
    				DB::table('restaurants')->insert(array('id_user'=> $id));
    			}
-   			elseif(Input::get('rol') == 'beach'){   			
-   				DB::table('beaches')->insert(array('id_user'=> $id));
+   			elseif(Input::get('rol') == 'nightlife'){   			
+   				DB::table('nightlifes')->insert(array('id_user'=> $id));
    			}
+   			elseif($user->rol == 'shopping'){
+				DB::table('shoppings')->insert(array('id_user'=> $id));
+			}
+			elseif($user->rol == 'tour'){
+				DB::table('tours')->insert(array('id_user'=> $id));
+			}
+			elseif($user->rol == 'beach'){
+				DB::table('beaches')->insert(array('id_user'=> $id));
+			}
+			elseif($user->rol == 'event'){
+				DB::table('events')->insert(array('id_user'=> $id));
+			}		
+			elseif($user->rol == 'transport'){
+				DB::table('transports')->insert(array('id_user'=> $id));
+			}
  
    			return Redirect::to('app/users')->with('message', 'Successfully added');
    		} 
@@ -152,6 +167,30 @@ class UserController extends \BaseController {
 
 		if ($validator->passes()) {
       		$user = User::find($id);
+      		if($user->rol == 'hotel'){
+				DB::table('hotels')->where('id_user', '=', $id)->delete();
+			}
+			elseif($user->rol == 'restaurant'){
+				DB::table('restaurants')->where('id_user', '=', $id)->delete();
+			}
+			elseif($user->rol == 'nightlife'){
+				DB::table('nightlifes')->where('id_user', '=', $id)->delete();
+			}
+			elseif($user->rol == 'shopping'){
+				DB::table('shoppings')->where('id_user', '=', $id)->delete();
+			}
+			elseif($user->rol == 'tour'){
+				DB::table('tours')->where('id_user', '=', $id)->delete();
+			}
+			elseif($user->rol == 'beach'){
+				DB::table('beaches')->where('id_user', '=', $id)->delete();
+			}
+			elseif($user->rol == 'event'){
+				DB::table('events')->where('id_user', '=', $id)->delete();
+			}
+			elseif($user->rol == 'transport'){
+				DB::table('transports')->where('id_user', '=', $id)->delete();
+			}
    			$user->firstname = Input::get('firstname');
    			$user->lastname = Input::get('lastname');
    			$user->email = Input::get('email');
@@ -159,6 +198,30 @@ class UserController extends \BaseController {
           	$user->status = Input::get('status');
           	$user->idlocation = Input::get('idlocation');
           	$user->phone = Input::get('phone');
+          	if(Input::get('rol') == 'hotel'){
+   				DB::table('hotels')->insert(array('id_user'=> $id));
+   			}
+   			elseif(Input::get('rol') == 'restaurant'){   			
+   				DB::table('restaurants')->insert(array('id_user'=> $id));
+   			}
+   			elseif(Input::get('rol') == 'nightlife'){   			
+   				DB::table('nightlifes')->insert(array('id_user'=> $id));
+   			}
+   			elseif($user->rol == 'shopping'){
+				DB::table('shoppings')->insert(array('id_user'=> $id));
+			}
+			elseif($user->rol == 'tour'){
+				DB::table('tours')->insert(array('id_user'=> $id));
+			}
+			elseif($user->rol == 'beach'){
+				DB::table('beaches')->insert(array('id_user'=> $id));
+			}
+			elseif($user->rol == 'event'){
+				DB::table('events')->insert(array('id_user'=> $id));
+			}		
+			elseif($user->rol == 'transport'){
+				DB::table('transports')->insert(array('id_user'=> $id));
+			}
    			$user->save();
  
    			return Redirect::to('app/users')->with('message', 'Successfully updated!');
@@ -177,8 +240,32 @@ class UserController extends \BaseController {
 	public function destroy($id)
 	{
 		$user = User::find($id);
+		if($user->rol == 'hotel'){
+			DB::table('hotels')->where('id_user', '=', $id)->delete();
+		}
+		elseif($user->rol == 'restaurant'){
+			DB::table('restaurants')->where('id_user', '=', $id)->delete();
+		}
+		elseif($user->rol == 'nightlife'){
+			DB::table('nightlifes')->where('id_user', '=', $id)->delete();
+		}
+		elseif($user->rol == 'shopping'){
+			DB::table('shoppings')->where('id_user', '=', $id)->delete();
+		}
+		elseif($user->rol == 'tour'){
+			DB::table('tours')->where('id_user', '=', $id)->delete();
+		}
+		elseif($user->rol == 'beach'){
+			DB::table('beaches')->where('id_user', '=', $id)->delete();
+		}
+		elseif($user->rol == 'event'){
+			DB::table('events')->where('id_user', '=', $id)->delete();
+		}
+		elseif($user->rol == 'transport'){
+			DB::table('transports')->where('id_user', '=', $id)->delete();
+		}
+
 		$user->delete();
-		DB::table('beaches')->where('id_user', '=', $id)->delete();
 		// redirect
 		Session::flash('message', 'Successfully deleted the user!');
 		return Redirect::to('app/users');

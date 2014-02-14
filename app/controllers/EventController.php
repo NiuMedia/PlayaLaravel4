@@ -1,6 +1,6 @@
 <?php
 
-class BeachController extends \BaseController {
+class EventController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class BeachController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('beaches.index');
+		return View::make('events.index');
 	}
 
 	/**
@@ -51,10 +51,10 @@ class BeachController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$beach = Beach::find($id);
-		$type_options = DB::table('types')->where('category', 'beach')->orderBy('name', 'asc')->lists('name','id');
+		$event = Event::find($id);
+		//$type_options = DB::table('types')->where('category', 'event')->orderBy('name', 'asc')->lists('name','id');
 		// show the edit form and pass the type
-		return View::make('beaches.edit', array('beach' => $beach, 'type_options' => $type_options));
+		return View::make('events.edit', array('event' => $event/*, 'type_options' => $type_options)*/));
 	}
 
 	/**
@@ -65,22 +65,25 @@ class BeachController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$validator = Validator::make(Input::all(), Beach::$rules);
+		$validator = Validator::make(Input::all(), Event::$rules);
 
 		if ($validator->passes()) {
-      		$beach = Beach::find($id);
-   			$beach->name = Input::get('name');
-   			$beach->address = Input::get('address');
-   			$beach->lat = Input::get('lat');
-   			$beach->long = Input::get('long');
-   			$beach->overview = Input::get('overview');
+      		$event = Event::find($id);
+   			$event = Beach::find($id);
+   			$event->name = Input::get('name');
+   			$event->address = Input::get('address');
+   			$event->lat = Input::get('lat');
+   			$event->long = Input::get('long');
+   			$event->phone = Input::get('phone');
+   			$event->overview = Input::get('overview');
    			//faltan fotos
-   			$beach->save();
+   			//faltan horarios
+   			$event->save();
  
-   			return Redirect::to('app/beaches')->with('message', 'Successfully updated!');
+   			return Redirect::to('app/events')->with('message', 'Successfully updated!');
    		} 
    		else {
-      		return Redirect::to('app/beaches/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
+      		return Redirect::to('app/events/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
    		}
 	}
 

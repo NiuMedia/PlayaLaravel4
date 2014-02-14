@@ -30,6 +30,11 @@ Route::group(array('prefix' => 'app'), function(){
 	Route::resource('beaches', 'BeachController');
 	Route::resource('hotels', 'HotelController');
 	Route::resource('restaurants', 'RestaurantController');
+	Route::resource('nightlifes', 'NightlifeController');
+	Route::resource('shoppings', 'ShoppingController');
+	Route::resource('tours', 'TourController');
+	Route::resource('events', 'EventController');
+	Route::resource('transports', 'TransportController');
 // 	Route::controller('users', 'UserController');
 });
 
@@ -48,6 +53,17 @@ Route::group(array('prefix' => 'api'), function() {
 		array('only' => array('index')));
 	Route::resource('restaurants', 'RestaurantsController', 
 		array('only' => array('index')));
+	Route::resource('nightlifes', 'NightlifesController', 
+		array('only' => array('index')));
+	Route::resource('shoppings', 'ShoppingsController', 
+		array('only' => array('index')));
+	Route::resource('tours', 'ToursController', 
+		array('only' => array('index')));
+	Route::resource('events', 'EventsController', 
+		array('only' => array('index')));
+	Route::resource('transports', 'TransportsController', 
+		array('only' => array('index')));
 });
+
 
 

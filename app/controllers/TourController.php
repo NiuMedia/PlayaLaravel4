@@ -1,6 +1,6 @@
 <?php
 
-class RestaurantController extends \BaseController {
+class TourController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class RestaurantController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('restaurants.index');
+		return View::make('tours.index');
 	}
 
 	/**
@@ -52,11 +52,11 @@ class RestaurantController extends \BaseController {
 	public function edit($id)
 	{
 		// get the beach
-		$restaurant = Restaurant::find($id);
+		$tour = Tour::find($id);
 
 		// show the edit form and pass the beach
-		return View::make('restaurants.edit')
-			->with('restaurant', $restaurant);
+		return View::make('tours.edit')
+			->with('tour', $tour);
 	}
 
 	/**
@@ -67,26 +67,24 @@ class RestaurantController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$validator = Validator::make(Input::all(), Restaurant::$rules);
+		$validator = Validator::make(Input::all(), Tour::$rules);
 
 		if ($validator->passes()) {
-      		$restaurant = Restaurant::find($id);
-   			$restaurant->name = Input::get('name');
-   			$restaurant->address = Input::get('address');
-   			$restaurant->lat = Input::get('lat');
-   			$restaurant->long = Input::get('long');
-   			$restaurant->phone = Input::get('phone');
-   			$restaurant->priceavg = Input::get('priceavg');
-   			$restaurant->stars = Input::get('stars');
-   			$restaurant->overview = Input::get('overview');
+      		$tour = Tour::find($id);
+   			$tour->name = Input::get('name');
+   			$tour->address = Input::get('address');
+   			$tour->lat = Input::get('lat');
+   			$tour->long = Input::get('long');
+   			$tour->phone = Input::get('phone');
+   			$tour->overview = Input::get('overview');
    			//faltan fotos
    			//faltan horarios
-   			$restaurant->save();
+   			$tour->save();
  
-   			return Redirect::to('app/restaurants')->with('message', 'Successfully updated!');
+   			return Redirect::to('app/tours')->with('message', 'Successfully updated!');
    		} 
    		else {
-      		return Redirect::to('app/restaurants/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
+      		return Redirect::to('app/tours/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
    		}
 	}
 

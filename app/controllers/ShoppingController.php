@@ -1,6 +1,6 @@
 <?php
 
-class RestaurantController extends \BaseController {
+class ShoppingController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class RestaurantController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('restaurants.index');
+		return View::make('shoppings.index');
 	}
 
 	/**
@@ -52,11 +52,11 @@ class RestaurantController extends \BaseController {
 	public function edit($id)
 	{
 		// get the beach
-		$restaurant = Restaurant::find($id);
+		$shopping = Shopping::find($id);
 
 		// show the edit form and pass the beach
-		return View::make('restaurants.edit')
-			->with('restaurant', $restaurant);
+		return View::make('shoppings.edit')
+			->with('shopping', $shopping);
 	}
 
 	/**
@@ -67,26 +67,24 @@ class RestaurantController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$validator = Validator::make(Input::all(), Restaurant::$rules);
+		$validator = Validator::make(Input::all(), Shopping::$rules);
 
 		if ($validator->passes()) {
-      		$restaurant = Restaurant::find($id);
-   			$restaurant->name = Input::get('name');
-   			$restaurant->address = Input::get('address');
-   			$restaurant->lat = Input::get('lat');
-   			$restaurant->long = Input::get('long');
-   			$restaurant->phone = Input::get('phone');
-   			$restaurant->priceavg = Input::get('priceavg');
-   			$restaurant->stars = Input::get('stars');
-   			$restaurant->overview = Input::get('overview');
+      		$shopping = Shopping::find($id);
+   			$shopping->name = Input::get('name');
+   			$shopping->address = Input::get('address');
+   			$shopping->lat = Input::get('lat');
+   			$shopping->long = Input::get('long');
+   			$shopping->phone = Input::get('phone');
+   			$shopping->overview = Input::get('overview');
    			//faltan fotos
    			//faltan horarios
-   			$restaurant->save();
+   			$shopping->save();
  
-   			return Redirect::to('app/restaurants')->with('message', 'Successfully updated!');
+   			return Redirect::to('app/shoppings')->with('message', 'Successfully updated!');
    		} 
    		else {
-      		return Redirect::to('app/restaurants/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
+      		return Redirect::to('app/shoppings/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
    		}
 	}
 

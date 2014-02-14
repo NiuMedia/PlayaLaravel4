@@ -74,8 +74,6 @@
                      </div>
                   </div>
 
-                  <?php $locations = DB::table('locations')->get();  ?>
-
                   <div class="form-group">
                      {{ Form::label('location', 'Location', array('class'=>'col-sm-3 control-label') ) }}
                      <div class="col-sm-9">

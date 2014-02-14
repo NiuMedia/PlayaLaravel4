@@ -1,6 +1,6 @@
 <?php
 
-class HotelController extends \BaseController {
+class NightlifeController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class HotelController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('hotels.index');
+		return View::make('nightlifes.index');
 	}
 
 	/**
@@ -52,10 +52,10 @@ class HotelController extends \BaseController {
 	public function edit($id)
 	{
 		// get the user
-		$hotel = Hotel::find($id);
-		$type_options = DB::table('types')->where('category', 'hotel')->orderBy('name', 'asc')->lists('name','id');
+		$nightlife = Nightlife::find($id);
+		$type_options = DB::table('types')->where('category', 'nightlife')->orderBy('name', 'asc')->lists('name','id');
 		// show the edit form and pass the type
-		return View::make('hotels.edit', array('hotel' => $hotel, 'type_options' => $type_options));
+		return View::make('nightlifes.edit', array('nightlife' => $nightlife, 'type_options' => $type_options));
 	}
 
 	/**
@@ -66,7 +66,7 @@ class HotelController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$validator = Validator::make(Input::all(), Hotel::$rules);
+		$validator = Validator::make(Input::all(), Nightlife::$rules);
 
 		if ($validator->passes()) {
       		$hotel = Hotel::find($id);
@@ -75,18 +75,15 @@ class HotelController extends \BaseController {
    			$hotel->lat = Input::get('lat');
    			$hotel->long = Input::get('long');
    			$hotel->phone = Input::get('phone');
-   			$hotel->pricelow = Input::get('pricelow');
-   			$hotel->pricehigh = Input::get('pricehigh');
-   			$hotel->priceavg = Input::get('priceavg');
-   			$hotel->stars = Input::get('stars');
    			$hotel->overview = Input::get('overview');
    			//faltan fotos
+   			//faltan horarios
    			$hotel->save();
  
-   			return Redirect::to('app/hotels')->with('message', 'Successfully updated!');
+   			return Redirect::to('app/nightlifes')->with('message', 'Successfully updated!');
    		} 
    		else {
-      		return Redirect::to('app/hotels/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
+      		return Redirect::to('app/nightlifes/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
    		}
 	}
 

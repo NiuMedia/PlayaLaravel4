@@ -17,6 +17,7 @@ class CreateUsersServicesTable extends Migration {
 			$table->increments('id');
 		   	$table->integer('idusers');
 		   	$table->integer('idservices');
+		   	$table->binary('logo');
 		   	$table->timestamps();
 		}});
 	}
