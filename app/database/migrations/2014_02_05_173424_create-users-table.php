@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration {
 		   	$table->string('password', 64);
 		   	$table->string('rol', 50);
 		   	$table->string('status',20);
-		   	$table->integer('id_location',10);
+		   	$table->integer('id_location');
 		   	$table->string('phone',50);
 		   	$table->timestamps();
 		}});

@@ -521,7 +521,7 @@
 	<script>
 	$(document).ready(function(){
 		function abrirSeccion(sec){
-	      document.getElementById("cont"+sec+"").style.display="block";
+	      document.getElementById("cont"+sec+"").style.display="table";
 	      document.getElementById("obtn"+sec+"").style.display="none";
 	      document.getElementById("cbtn"+sec+"").style.display="block";
 	     }
