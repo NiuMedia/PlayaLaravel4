@@ -8,7 +8,12 @@
    @section('content')
 
       {{ Form::open(array('url'=>'app/users', 'role'=>'form', 'class'=>'form-horizontal')) }}
-         <h2 class="form-signup-heading">New User</h2>
+      <div class="row title-header">
+        <div class="col-md-9">
+            <h2 class="form-signup-heading">New User</h2>
+        </div>
+    </div>
+         
          <ul>
             @foreach($errors->all() as $error)
                <li>{{ $error }}</li>
@@ -55,14 +60,14 @@
                   <div class="form-group">
                      {{ Form::label('password', 'Password', array('class'=>'col-sm-3 control-label')  ) }}
                      <div class="col-sm-9">
-                        {{ Form::password('password', null, array('class' => 'form-control')) }}
+                        {{ Form::password('password', array('class' => 'form-control')) }}
                      </div>
                   </div>
           
                   <div class="form-group">
                      {{ Form::label('password_confirmation', 'Confirm password', array('class'=>'col-sm-3 control-label') ) }}
                      <div class="col-sm-9">
-                        {{ Form::password('password_confirmation', null,  array('class' => 'form-control')) }}
+                        {{ Form::password('password_confirmation',  array('class' => 'form-control')) }}
                      </div>
                   </div>
                </div>

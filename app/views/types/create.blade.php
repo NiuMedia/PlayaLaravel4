@@ -33,7 +33,7 @@
          <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-               {{ Form::submit('Add type', array('class'=>'btn btn-large btn-primary btn-block', 'id'=>'btn-register'))}}
+               {{ Form::submit('Add new type', array('class'=>'btn btn-large btn-primary btn-block', 'id'=>'btn-register'))}}
             </div>
             <div class="col-md-4"></div>
          </div>

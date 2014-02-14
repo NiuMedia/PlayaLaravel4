@@ -6,12 +6,12 @@
 @stop
 
 @section('content')
-	<div class="row">
+	<div class="row title-header">
 		<div class="col-md-3">
-			<h1>Types</h1>
+			<h1>Locations</h1>
 		</div>
 		<div class="col-md-3">
-			<a class="btn btn-small btn-success" href="{{ URL::to('app/locations/create') }}">Create New Location</a>
+			<p class="title-p"><a class="btn btn-small btn-success" href="{{ URL::to('app/locations/create') }}">Create New Location</a></p>
 		</div>
 	</div>
 	

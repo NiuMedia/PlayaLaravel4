@@ -44,6 +44,10 @@ background-color: rgb(213, 86, 86);
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
 background-color: #FFB0B0;
 }
+.title-header{
+	color: white;
+
+}
 #jumbo-login{
 	margin-top: 30px;
 	font-family: 'Actor', sans-serif;
@@ -79,7 +83,7 @@ background-color: #FFB0B0;
 	width: 50%;
 }
 #btn-register{
-	margin-top: 50px;
+	margin-top: 10px;
 	padding: 2em 1em;
 }
 
@@ -123,14 +127,25 @@ background-color: #FFB0B0;
 	text-align: right;
 }
 @media only screen and (min-width : 1200px) {
-
+	.title-p{
+		padding-top: 30px;
+	}
 	#jumbo-login{
 		margin-top: 100px;
 	}
+	.text-right{
+	text-align: right;
+}
 }
 @media only screen and (min-width : 992px) and (max-width : 1199px){
+	.title-p{
+		padding-top: 30px;
+	}
 	#jumbo-login{
 		margin-top: 50px;
+	}
+	.text-right{
+		text-align: right;
 	}
 }
 

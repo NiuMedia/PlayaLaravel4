@@ -6,10 +6,15 @@
 @stop
 
 @section('content')
-
-	<h1>Admin Dashboard</h1>
-	 
-	<p>Welcome to your Dashboard {{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
+	<div class="row title-header">
+		<div class="col-md-9">
+			<h1>Admin Dashboard</h1>
+		</div>
+		<div class="col-md-3">
+			<p class="title-p">Admin: {{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
+		</div>
+	</div>
+	
 	<div class="panel panel-warning">
 		<div class="panel-heading">
 			<h3 class="panel-title to-left">ADMINISTRATORS</h3>

@@ -86,7 +86,7 @@ class LocationController extends \BaseController {
    		if ($validator->passes()) {
       		$location = Location::find($id);
    			$location->name = Input::get('name');
-   			$type->save();
+   			$location->save();
  
    			return Redirect::to('app/locations')->with('message', 'Succesfully added');
    		} 

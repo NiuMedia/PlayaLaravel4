@@ -6,8 +6,12 @@
 @stop
 
 @section('content')
+<div class="row title-header">
+        <div class="col-md-9">
+            <h1>Edit {{ $user->firstname }} {{$user->lastname}}</h1>
+        </div>
+    </div>
 
-<h1>Edit {{ $user->firstname }} {{$user->lastname}}</h1>
 {{ HTML::ul($errors->all()) }}
 {{ Form::model($user, array('route' => array('app.users.update', $user->id), 'method' => 'PUT', 'class'=>'form-horizontal')) }}
 
