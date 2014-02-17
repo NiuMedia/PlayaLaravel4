@@ -47,7 +47,27 @@
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
-        <!-- END Navbar --> 
+        <!-- END Navbar -->
+
+        <!-- LEFT SIDEBAR MENU -->
+        <div id="sidebar">
+            <ul>
+                <li>Administrator</li>
+                <li>Beaches</li>
+                <li>Doctors</li>
+                <li>Events</li>
+                <li>Hotels</li>
+                <li>Nightlife</li>
+                <li>Restaurant</li>
+                <li>Shopping</li>
+                <li>Tours</li>
+                <li>Transportation</li>
+                <li>+ New User</li>
+                <li>Locations</li>
+                <li>Services</li>
+            </ul>
+        </div>
+        <!-- END LEFT SIDEBAR MENU --> 
 
         <!-- Container -->
         <div class="container page-content">
@@ -72,6 +92,7 @@
             var imageFit = function() {
                 windowHeight = $(window).height();
                 $('#img-back').css('height', windowHeight).refresh();
+                $('#sidebar').css('height', windowHeight);
             };
             $(document).ready(imageFit);
             $(window).resize(imageFit);
