@@ -19,7 +19,7 @@
 
     </head>
 
-    <body>
+    <body class="has-sideabar">
         <div id="img-back"></div>
         <!-- Navbar -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -52,25 +52,26 @@
         <!-- LEFT SIDEBAR MENU -->
         <div id="sidebar">
             <ul>
-                <li>Administrator</li>
-                <li>Beaches</li>
-                <li>Doctors</li>
-                <li>Events</li>
-                <li>Hotels</li>
-                <li>Nightlife</li>
-                <li>Restaurant</li>
-                <li>Shopping</li>
-                <li>Tours</li>
-                <li>Transportation</li>
-                <li>+ New User</li>
-                <li>Locations</li>
-                <li>Services</li>
+                <li>{{ HTML::link('app/users', 'Administrator',array('class'=>'sidebarBtn','id'=>'admin')) }}</li>
+                <li>{{ HTML::link('app/users', 'Beaches',array('class'=>'sidebarBtn','id'=>'beach')) }}</li>
+                <li>{{ HTML::link('app/users', 'Doctors',array('class'=>'sidebarBtn','id'=>'doc')) }}</li>
+                <li>{{ HTML::link('app/users', 'Events',array('class'=>'sidebarBtn','id'=>'event')) }}</li>
+                <li>{{ HTML::link('app/users', 'Hotels',array('class'=>'sidebarBtn','id'=>'hotel')) }}</li>
+                <li>{{ HTML::link('app/users', 'Nightlife',array('class'=>'sidebarBtn','id'=>'night')) }}</li>
+                <li>{{ HTML::link('app/users', 'Restaurant',array('class'=>'sidebarBtn','id'=>'restaurant')) }}</li>
+                <li>{{ HTML::link('app/users', 'Shopping',array('class'=>'sidebarBtn','id'=>'shop')) }}</li>
+                <li>{{ HTML::link('app/users', 'Tours',array('class'=>'sidebarBtn','id'=>'tour')) }}</li>
+                <li>{{ HTML::link('app/users', 'Transportation',array('class'=>'sidebarBtn','id'=>'transport')) }}</li>
+                <li>{{ HTML::link('app/users/create', '+ New User',array('class'=>'sidebarBtn')) }}</li>
+                <li>{{ HTML::link('app/locations', 'Locations',array('class'=>'sidebarBtn')) }}</li>
+                <li>{{ HTML::link('app/types', 'Types',array('class'=>'sidebarBtn')) }}</li>
+                <li>{{ HTML::link('app/services', 'Services',array('class'=>'sidebarBtn')) }}</li>
             </ul>
         </div>
         <!-- END LEFT SIDEBAR MENU --> 
 
         <!-- Container -->
-        <div class="container page-content">
+        <div class="container page-content container-with-sidebar">
 
             <!-- Content -->
             @yield('content')
