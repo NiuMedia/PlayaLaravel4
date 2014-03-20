@@ -23,6 +23,7 @@ class CreateTransportsTable extends Migration {
 			$table->float('long',10);
 			$table->string('phone', 40);
 			$table->string('cellphone', 40);
+			$table->string('email',70);
 			$table->string('overview',500);
 			$table->binary('photo1');
 			$table->binary('photo2');

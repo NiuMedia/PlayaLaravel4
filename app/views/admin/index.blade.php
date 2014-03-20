@@ -1,4 +1,4 @@
-@extends('layouts.masterdashadmin')
+@extends('layouts.masterdashsuper')
 
 @section('title')
 @parent
@@ -6,10 +6,10 @@
 @stop
 
 @section('content')
-@if(Auth::user()->rol =='admin')
+	@if(Auth::user()->rol == 'superadmin')
 	<div class="row title-header">
 		<div class="col-md-9">
-			<h1>Admin Dashboard</h1>
+			<h1>Super Administrator Dashboard</h1>
 		</div>
 		<div class="col-md-3">
 			<p class="title-p">Admin: {{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
@@ -38,7 +38,7 @@
 			</thead>
 			<tbody>
 			@foreach($users as $user)
-				@if($user->rol=='admin' && $user->idlocation==Auth::user()->idlocation)
+				@if($user->rol=='admin')
 				<tr>
 					<td>{{$user->firstname}} {{$user->lastname}}</td>
 					<td>{{$user->username}}</td>
@@ -89,7 +89,7 @@
 			</thead>
 			<tbody>
 				@foreach($users as $user)
-					@if($user->rol=='hotel' && $user->idlocation==Auth::user()->idlocation)
+					@if($user->rol=='hotel')
 					<tr>
 						<td>{{$user->firstname}} {{$user->lastname}}</td>
 						<td>{{$user->username}}</td>
@@ -140,7 +140,7 @@
 		</thead>
 		<tbody>
 			@foreach($users as $user)
-				@if($user->rol=='restaurant' && $user->idlocation==Auth::user()->idlocation)
+				@if($user->rol=='restaurant')
 				<tr>
 					<td>{{$user->firstname}} {{$user->lastname}}</td>
 					<td>{{$user->username}}</td>
@@ -191,7 +191,7 @@
 		</thead>
 		<tbody>
 			@foreach($users as $user)
-				@if($user->rol=='nightlife' && $user->idlocation==Auth::user()->idlocation)
+				@if($user->rol=='nightlife')
 				<tr>
 					<td>{{$user->firstname}} {{$user->lastname}}</td>
 					<td>{{$user->username}}</td>
@@ -242,7 +242,7 @@
 		</thead>
 		<tbody>
 			@foreach($users as $user)
-				@if($user->rol=='beach' && $user->idlocation==Auth::user()->idlocation)
+				@if($user->rol=='beach')
 				<tr>
 					<td>{{$user->firstname}} {{$user->lastname}}</td>
 					<td>{{$user->username}}</td>
@@ -293,7 +293,7 @@
 		</thead>
 		<tbody>
 			@foreach($users as $user)
-				@if($user->rol=='tour' && $user->idlocation==Auth::user()->idlocation)
+				@if($user->rol=='tour')
 				<tr>
 					<td>{{$user->firstname}} {{$user->lastname}}</td>
 					<td>{{$user->username}}</td>
@@ -344,7 +344,7 @@
 			</thead>
 			<tbody>
 				@foreach($users as $user)
-					@if($user->rol=='event' && $user->idlocation==Auth::user()->idlocation)
+					@if($user->rol=='event')
 					<tr>
 						<td>{{$user->firstname}} {{$user->lastname}}</td>
 						<td>{{$user->username}}</td>
@@ -395,7 +395,7 @@
 			</thead>
 			<tbody>
 				@foreach($users as $user)
-					@if($user->rol=='shopping' && $user->idlocation==Auth::user()->idlocation)
+					@if($user->rol=='shopping')
 					<tr>
 						<td>{{$user->firstname}} {{$user->lastname}}</td>
 						<td>{{$user->username}}</td>
@@ -446,7 +446,7 @@
 			</thead>
 			<tbody>
 				@foreach($users as $user)
-					@if($user->rol=='transportation' && $user->idlocation==Auth::user()->idlocation)
+					@if($user->rol=='transportation')
 					<tr>
 						<td>{{$user->firstname}} {{$user->lastname}}</td>
 						<td>{{$user->username}}</td>
@@ -497,7 +497,7 @@
 			</thead>
 			<tbody>
 				@foreach($users as $user)
-					@if($user->rol=='doctor' && $user->idlocation==Auth::user()->idlocation)
+					@if($user->rol=='doctor')
 					<tr>
 						<td>{{$user->firstname}} {{$user->lastname}}</td>
 						<td>{{$user->username}}</td>

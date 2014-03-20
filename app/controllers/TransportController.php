@@ -2,6 +2,10 @@
 
 class TransportController extends \BaseController {
 
+	public function __construct() {
+      	$this->beforeFilter('csrf', array('on'=>'post'));
+      	$this->beforeFilter('auth', array('only'=>array('index', 'create', 'show', 'edit', 'destroy')));
+  	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -77,6 +81,7 @@ class TransportController extends \BaseController {
    			$transport->long = Input::get('long');
    			$transport->phone = Input::get('phone');
    			$transport->cellphone = Input::get('cellphone');
+   			$transport->email = Input::get('email');
    			$transport->overview = Input::get('overview');
    			//faltan fotos
    			$transport->save();

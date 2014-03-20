@@ -19,8 +19,8 @@ Route::get('/', function()
 Route::controller('users', 'UserController');
 
 Route::group(array('prefix' => 'app'), function(){
-	Route::resource('users', 'UserController',
-	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
+	Route::resource('admin', 'AdminController');
+	Route::resource('users', 'UserController');
 	Route::resource('types', 'TypeController',
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
 	Route::resource('services', 'ServiceController',

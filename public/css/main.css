@@ -138,7 +138,7 @@ background-color: #FFB0B0;
 	vertical-align: top;
 	position: fixed;
 	left:0px;
-	background-color: #971723;
+	background-color: #be1e2d;
 }
 #sidebar ul {
     list-style-type: none;
@@ -153,7 +153,7 @@ background-color: #FFB0B0;
 .sidebarBtn{
 	width: 100%;
 	color: white;
-	padding:.5em 1em;
+	padding:.8em 1em;
 	display: block;
 	text-decoration: none;
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersServicesTable extends Migration {
+class CreateActivitiesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,10 @@ class CreateUsersServicesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('usersServices', function(Blueprint $table) {
+		Schema::create('activities', function(Blueprint $table) {
         {
 			$table->increments('id');
-		   	$table->integer('idusers');
-		   	$table->integer('idservices');
+		   	$table->string('name', 20);
 		   	$table->timestamps();
 		}});
 	}
@@ -28,7 +27,7 @@ class CreateUsersServicesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('usersServices');
+		Schema::dropIfExists('activities');
 	}
 
 }

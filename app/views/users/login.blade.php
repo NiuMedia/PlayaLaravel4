@@ -14,10 +14,10 @@
             <h2 align="center">Login</h2>
             <div class="form-group row">
                 <div class="col-sm-4">
-                    {{Form::label('username', 'User Name')}}
+                    {{Form::label('email', 'Email')}}
                 </div>
                 <div class="col-sm-8">
-                    {{ Form::text('username', null, array('class' => 'form-control')) }}
+                    {{ Form::text('email', null, array('class' => 'form-control')) }}
                 </div>
             </div>
 

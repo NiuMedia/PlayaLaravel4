@@ -38,11 +38,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                <!-- <li>{{ HTML::link('app/users/create', 'Register new user',array('class'=>'navbtn')) }}</li>
+                <!--<li>{{ HTML::link('app/users/create', 'Register new user',array('class'=>'navbtn')) }}</li>
                 <li>{{ HTML::link('app/locations', 'Locations',array('class'=>'navbtn')) }}</li>
                 <li>{{ HTML::link('app/types', 'Types',array('class'=>'navbtn')) }}</li>
-                <li>{{ HTML::link('app/services', 'Services',array('class'=>'navbtn')) }}</li> -->
-                <li>{{ HTML::link('users/logout', 'Account',array('class'=>'logout')) }}</li>
+                <li>{{ HTML::link('app/services', 'Services',array('class'=>'navbtn')) }}</li>-->
+                <li>{{ HTML::link('app/admin/account'. Auth::user()->id, 'Account',array('class'=>'logout')) }}</li>
                 <li>{{ HTML::link('users/logout', 'Logout',array('class'=>'logout')) }}</li>
               </ul>
             </div><!-- /.navbar-collapse -->
@@ -53,7 +53,7 @@
         <!-- LEFT SIDEBAR MENU -->
         <div id="sidebar">
             <ul>
-                <li>{{ HTML::link('app/users', 'Dashboard',array('class'=>'sidebarBtn', 'id'=>'dashboard')) }}</li>
+                <li>{{ HTML::link('app/admin', 'Dashboard',array('class'=>'sidebarBtn', 'id'=>'dashboard')) }}</li>
                 <li>{{ HTML::link('app/users', 'Administrator',array('class'=>'sidebarBtn','id'=>'admin')) }}</li>
                 <li>{{ HTML::link('app/users', 'Beaches',array('class'=>'sidebarBtn','id'=>'beach')) }}</li>
                 <li>{{ HTML::link('app/users', 'Doctors',array('class'=>'sidebarBtn','id'=>'doc')) }}</li>
@@ -65,9 +65,9 @@
                 <li>{{ HTML::link('app/users', 'Tours',array('class'=>'sidebarBtn','id'=>'tour')) }}</li>
                 <li>{{ HTML::link('app/users', 'Transportation',array('class'=>'sidebarBtn','id'=>'transport')) }}</li>
                 <li>{{ HTML::link('app/users/create', '+ New User',array('class'=>'sidebarBtn')) }}</li>
-                <!--<li>{{ HTML::link('app/locations', 'Locations',array('class'=>'sidebarBtn')) }}</li>-->
-                <!--<li>{{ HTML::link('app/types', 'Types',array('class'=>'sidebarBtn')) }}</li>
-                <li>{{ HTML::link('app/services', 'Services',array('class'=>'sidebarBtn')) }}</li>-->
+                <li>{{ HTML::link('app/locations', 'Locations',array('class'=>'sidebarBtn')) }}</li>
+                <li>{{ HTML::link('app/types', 'Types',array('class'=>'sidebarBtn')) }}</li>
+                <li>{{ HTML::link('app/services', 'Services',array('class'=>'sidebarBtn')) }}</li>
             </ul>
         </div>
         <!-- END LEFT SIDEBAR MENU --> 

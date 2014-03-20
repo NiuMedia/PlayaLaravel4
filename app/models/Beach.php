@@ -5,8 +5,7 @@
 		
 		public static $rules = array(
 	   		'name'=>'required',
-	   		'address'=>'required',
-	   		'id_type'=>'required'
+	   		'address'=>'required'
 	   	);
 	}
 

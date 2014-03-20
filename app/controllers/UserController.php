@@ -9,7 +9,7 @@ class UserController extends \BaseController {
 
 	public function __construct() {
       	$this->beforeFilter('csrf', array('on'=>'post'));
-      	$this->beforeFilter('auth', array('only'=>array('index', 'create', 'show', 'edit', 'destroy', 'beach')));
+      	$this->beforeFilter('auth', array('only'=>array('index', 'create', 'show', 'edit', 'destroy')));
   	}
 
   	protected $layout = "layouts.masterlog";
@@ -19,21 +19,42 @@ class UserController extends \BaseController {
   	}
 
   	public function postSignin() {
-      	if (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'admin'))) {
+  		if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'superadmin'))) {
+        	return Redirect::to('app/admin')->with('message', 'You are now logged in!');
+    	}
+      	elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'admin'))) {
         	return Redirect::to('app/users')->with('message', 'You are now logged in!');
     	}
-      	elseif (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'hotel'))) {
+      	elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'hotel'))) {
           	return Redirect::to('app/hotels')->with('message', 'You are now logged in!');
         }
-        elseif (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'restaurant'))) {
+        elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'restaurant'))) {
           	return Redirect::to('app/restaurants')->with('message', 'You are now logged in!');
         }
-        elseif (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password'), 'rol'=>'beach'))) {
+        elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'nightlife'))) {
+          	return Redirect::to('app/nightlifes')->with('message', 'You are now logged in!');
+        }
+        elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'beach'))) {
           	return Redirect::to('app/beaches')->with('message', 'You are now logged in!');
+        }
+        elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'tour'))) {
+          	return Redirect::to('app/tours')->with('message', 'You are now logged in!');
+        }
+        elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'event'))) {
+          	return Redirect::to('app/events')->with('message', 'You are now logged in!');
+        }
+        elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'shopping'))) {
+          	return Redirect::to('app/shoppings')->with('message', 'You are now logged in!');
+        }
+        elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'transport'))) {
+          	return Redirect::to('app/transports')->with('message', 'You are now logged in!');
+        }
+        elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'doctor'))) {
+          	return Redirect::to('app/doctors')->with('message', 'You are now logged in!');
         }
     	else {
         	return Redirect::to('users/login')
-            	->with('message', 'Your username/password combination was incorrect')
+            	->with('message', 'Your email/password combination was incorrect')
             	->withInput();
     	}
  	}
@@ -42,13 +63,14 @@ class UserController extends \BaseController {
      	$this->layout->content = View::make('users.dashboard');
   	}
 
-  	public function getBeach() {
-     	$this->layout->content = View::make('beaches.index');
-  	}
-
   	public function getLogout() {
       	Auth::logout();
       	return Redirect::to('users/login')->with('message', 'Your are now logged out!');
+  	}
+
+  	public function account()
+  	{
+  		return View::make('admin.account');
   	}
 
 	public function index()
@@ -101,19 +123,19 @@ class UserController extends \BaseController {
    			elseif(Input::get('rol') == 'nightlife'){   			
    				DB::table('nightlifes')->insert(array('id_user'=> $id));
    			}
-   			elseif($user->rol == 'shopping'){
+   			elseif(Input::get('rol') == 'shopping'){
 				DB::table('shoppings')->insert(array('id_user'=> $id));
 			}
-			elseif($user->rol == 'tour'){
+			elseif(Input::get('rol') == 'tour'){
 				DB::table('tours')->insert(array('id_user'=> $id));
 			}
-			elseif($user->rol == 'beach'){
+			elseif(Input::get('rol') == 'beach'){
 				DB::table('beaches')->insert(array('id_user'=> $id));
 			}
-			elseif($user->rol == 'event'){
+			elseif(Input::get('rol') == 'event'){
 				DB::table('events')->insert(array('id_user'=> $id));
 			}		
-			elseif($user->rol == 'transport'){
+			elseif(Input::get('rol') == 'transport'){
 				DB::table('transports')->insert(array('id_user'=> $id));
 			}
  
@@ -230,6 +252,7 @@ class UserController extends \BaseController {
       		return Redirect::to('app/users/'. $id . '/edit')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();  
    		}
 	}
+
 
 	/**
 	 * Remove the specified resource from storage.

@@ -15,10 +15,27 @@
 	        {{ Form::text('name', null, array('class' => 'form-control')) }}
 	    </div>
 
+        <div class="form-group">
+            {{ Form::label('type', 'Category', array('class'=>'col-sm-3 control-label') ) }}
+            <div class="col-sm-9">
+               {{ Form::select('idtype', $type_options , null, array('class' => 'form-control select-own')) }}
+            </div>
+        </div>
+
      	<div class="form-group">
         	{{ Form::label('address', 'Address') }}
         	{{ Form::text('address', null, array('class' => 'form-control')) }}
      	</div>
+
+        <div class="form-group">
+            {{ Form::label('lat', 'Latitud') }}
+            {{ Form::text('lat', null, array('class' => 'form-control')) }}
+        </div>
+
+        <div class="form-group">
+            {{ Form::label('long', 'Longitud') }}
+            {{ Form::text('long', null, array('class' => 'form-control')) }}
+        </div>
 
      	<div class="form-group">
         	{{ Form::label('overview', 'Overview') }}

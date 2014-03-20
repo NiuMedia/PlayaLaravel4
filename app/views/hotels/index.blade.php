@@ -66,7 +66,7 @@
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td>{{}}</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td>Contact Person</td>
