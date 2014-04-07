@@ -1,8 +1,8 @@
-@extends('layouts.masterview')
+@extends('layouts.masterdashadmin')
 
    @section('title')
       @parent
-         :: Register
+         :: New User
    @stop
    
    @section('content')
@@ -51,13 +51,6 @@
                   </div>
           
                   <div class="form-group">
-                     {{ Form::label('username', 'Username', array('class'=>'col-sm-3 control-label') ) }}
-                     <div class="col-sm-9">
-                        {{ Form::text('username', null, array('class' => 'form-control')) }}
-                     </div>
-                  </div>
-          
-                  <div class="form-group">
                      {{ Form::label('password', 'Password', array('class'=>'col-sm-3 control-label')  ) }}
                      <div class="col-sm-9">
                         {{ Form::password('password', array('class' => 'form-control')) }}
@@ -75,7 +68,7 @@
                   <div class="form-group">
                      {{ Form::label('rol', 'Category', array('class'=>'col-sm-3 control-label') ) }}
                      <div class="col-sm-9">
-                        {{ Form::select('rol', array('0' => 'Select a category', 'admin' => 'Administrador', 'hotel' => 'Hotel', 'restaurant' => 'Restaurant', 'nightlife' => 'Nightlife', 'shopping' => 'Shopping', 'tour' => 'Tour', 'beach' => 'Beach', 'event' => 'Event', 'transportation' => 'Transportation', 'doctor' => 'Doctor'), null, array('class' => 'form-control select-own')) }}
+                        {{ Form::select('rol', array('0' => 'Select a category', 'super' => 'Super Administrator', 'admin' => 'Administrador', 'hotel' => 'Hotel', 'restaurant' => 'Restaurant', 'nightlife' => 'Nightlife', 'shopping' => 'Shopping', 'tour' => 'Tour', 'beach' => 'Beach', 'event' => 'Event', 'transportation' => 'Transportation', 'doctor' => 'Doctor'), null, array('class' => 'form-control select-own')) }}
                      </div>
                   </div>
 
@@ -102,6 +95,8 @@
                <div class="col-md-4"></div>
             </div>
             
+            <br/>
+            <br/>
                
             
          </div>

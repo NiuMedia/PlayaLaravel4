@@ -7,18 +7,9 @@ class AdminController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-
-	public function __construct() {
-      	$this->beforeFilter('csrf', array('on'=>'post'));
-      	$this->beforeFilter('auth', array('only'=>array('index', 'create', 'show', 'edit', 'destroy')));
-  	}
-  	
 	public function index()
 	{
-		$users = User::all();
-
-    	return View::make('admin.index')
-      		->with('users', $users);
+		return View::make('admin.list');
 	}
 
 	/**
@@ -49,12 +40,7 @@ class AdminController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		// get the user
-		$user = User::find($id);
-
-		// show the view and pass the nerd to it
-		return View::make('admin.account')
-			->with('user', $user);
+		//
 	}
 
 	/**
@@ -65,11 +51,7 @@ class AdminController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		// get the user
-		$user = User::find($id);
-		$location_options = DB::table('locations')->orderBy('name', 'asc')->lists('name','id');
-		// show the edit form and pass the type
-		return View::make('admin.accountedit', array('user' => $user));
+		//
 	}
 
 	/**
@@ -93,5 +75,6 @@ class AdminController extends \BaseController {
 	{
 		//
 	}
+
 
 }

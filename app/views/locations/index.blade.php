@@ -1,4 +1,4 @@
-@extends('layouts.masterview')
+@extends('layouts.masterdashadmin')
 
 @section('title')
   @parent

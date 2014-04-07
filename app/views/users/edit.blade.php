@@ -1,4 +1,4 @@
-@extends('layouts.masterview')
+@extends('layouts.masterdashadmin')
 
 @section('title')
 @parent
@@ -42,27 +42,37 @@
                 </div>
             </div>
             <div class="form-group">
-                {{ Form::label('username', 'Username', array('class'=>'col-sm-3 control-label')) }}
-                <div class="col-sm-9">                    
-                    {{ Form::text('username', null, array('class' => 'form-control')) }}
-                </div>
-            </div>
-
-            <div class="form-group">
                 {{ Form::label('location', 'Location', array('class'=>'col-sm-3 control-label') ) }}
                 <div class="col-sm-9">
                     {{ Form::select('idlocation', $location_options , null, array('class' => 'form-control select-own')) }}
                 </div>
             </div>
+            @if(Auth::user()->id == $user->id)
+                <div class="form-group">
+                    {{ Form::label('password', 'New Password', array('class'=>'col-sm-3 control-label')  ) }}
+                    <div class="col-sm-9">
+                       {{ Form::password('password', array('class' => 'form-control')) }}
+                    </div>
+                </div>
+          
+                <div class="form-group">
+                    {{ Form::label('password_confirmation', 'Confirm password', array('class'=>'col-sm-3 control-label') ) }}
+                    <div class="col-sm-9">
+                       {{ Form::password('password_confirmation',  array('class' => 'form-control')) }}
+                    </div>
+                </div>
+            @endif
+            @if(Auth::user()->id != $user->id)
             <div class="form-group">
                 {{ Form::label('status', 'Status', array('class'=>'col-sm-3 control-label')) }}
                 <div class="col-sm-9">                
                     {{ Form::select('status', array('0' => 'Select a status', 'active' => 'Active', 'inactive' => 'Inactive'), null, array('class' => 'form-control')) }}
                 </div>
              </div>
+            @endif
         </div>
         <div class="col-md-3">
-            {{ Form::submit('Submit', array('class'=>'btn btn-large btn-primary btn-block','id'=>'btn-register'))}}
+            {{ Form::submit('Save', array('class'=>'btn btn-large btn-primary btn-block','id'=>'btn-register'))}}
         </div>
     </div>
 {{ Form::close() }}

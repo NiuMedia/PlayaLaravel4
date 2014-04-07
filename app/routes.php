@@ -20,6 +20,7 @@ Route::controller('users', 'UserController');
 
 Route::group(array('prefix' => 'app'), function(){
 	Route::resource('admin', 'AdminController');
+	Route::resource('adminlist', 'AdminListController');
 	Route::resource('users', 'UserController');
 	Route::resource('types', 'TypeController',
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
@@ -27,14 +28,24 @@ Route::group(array('prefix' => 'app'), function(){
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
 	Route::resource('locations', 'LocationController',
 	 			array('only'=> array('index', 'show', 'create', 'store', 'edit', 'update', 'destroy')));
-	Route::resource('beaches', 'BeachController');
+	Route::resource('beachs', 'BeachController');
+	Route::resource('beachlist', 'BeachListController');
+	Route::resource('doctors', 'DoctorController');
+	Route::resource('doctorlist', 'DoctorListController');
 	Route::resource('hotels', 'HotelController');
+	Route::resource('hotellist', 'HotelListController');
 	Route::resource('restaurants', 'RestaurantController');
+	Route::resource('restaurantlist', 'RestaurantListController');
 	Route::resource('nightlifes', 'NightlifeController');
+	Route::resource('nightlifelist', 'NightlifeListController');
 	Route::resource('shoppings', 'ShoppingController');
+	Route::resource('shoppinglist', 'ShoppingListController');
 	Route::resource('tours', 'TourController');
+	Route::resource('tourlist', 'TourListController');
 	Route::resource('events', 'EventController');
+	Route::resource('eventlist', 'EventListController');
 	Route::resource('transports', 'TransportController');
+	Route::resource('transportlist', 'TransportListController');
 // 	Route::controller('users', 'UserController');
 });
 

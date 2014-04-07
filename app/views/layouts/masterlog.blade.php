@@ -12,26 +12,46 @@
         {{ HTML::style('css/bootstrap.css') }}
         {{ HTML::style('css/bootstrap-responsive.css') }}
         {{ HTML::style('css/main.css') }}
-         <!-- seccion de script -->
-        {{ HTML::script('js/jquery-2.1.0.min.js') }}
-        {{ HTML::script('js/bootstrap.min.js') }}
-        <link href='http://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css'>
 
+         <!-- seccion de script -->
+        {{ HTML::script('js/jquery.v1.8.3.min.js') }}
+        {{ HTML::script('js/bootstrap/bootstrap.min.js') }}
+        <script src="http://use.edgefonts.net/source-sans-pro:n2,i2,n3,n4,i4,n6,n7,n9.js"></script>
+
+        <style>
+        @section('styles')
+            body {
+                padding-top: 60px;
+            }
+        @show
+        </style>
     </head>
 
     <body>
-        <div id="img-back"></div>
         <!-- Navbar -->
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
                 <div class="container">
-                    {{ HTML::image('img/playa.png', $alt = null, $attributes = array('class'=>'navbar-brand','width'=>'80px') ) }}
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Playa</a>
+
+                    <!-- Everything you want hidden at 940px or less, place within here -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            
+                        </ul> 
+                    </div>
                 </div>
             </div>
         </div> 
 
         <!-- Container -->
-        <div class="container page-content">
+        <div class="container">
 
             <!-- Content -->
             @yield('content')
@@ -49,13 +69,6 @@
                 Playa All Rights Reserved © 2014
             </div>
         </footer>
-    <script type="text/javascript">
-        var imageFit = function() {
-            windowHeight = $(window).height();
-            $('#img-back').css('height', windowHeight).refresh();
-        };
-        $(document).ready(imageFit);
-        $(window).resize(imageFit);
-    </script>
+
     </body>
 </html>

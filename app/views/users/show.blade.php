@@ -1,4 +1,4 @@
-@extends('layouts.masterview')
+@extends('layouts.masterdashadmin')
 
 @section('title')
 @parent
@@ -17,16 +17,12 @@
 			<div class="col-md-9">{{ $user->email }}</div>
 		</div>
 		<div class="row">
-			<div class="col-md-3 text-right"><strong>Username:</strong></div>
-			<div class="col-md-9">{{ $user->username }}</div>
-		</div>
-		<div class="row">
 			<div class="col-md-3 text-right"><strong>Type:</strong> </div>
 			<div class="col-md-9">{{ $user->rol }}</div>
 		</div>
 		<div class="row">
-			<div class="col-md-3 text-right"><strong>Status:</strong></div>
-			<div class="col-md-9">{{ $user->status }}</div>
+			<div class="col-md-3 text-right"><strong>Phone:</strong></div>
+			<div class="col-md-9">{{ $user->phone }}</div>
 		</div>
 		<div class="row">
 			<div class="col-md-3 text-right"><strong>Status:</strong></div>

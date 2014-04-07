@@ -2,34 +2,33 @@
 
 @section('title')
   @parent
-     :: Dashboard
+     :: Dashboard Hotel
 @stop
 
 @section('content')
 
-	<h1>Hotel Dashboard</h1>
-
-	<p>Welcome {{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
+	<h1>Welcome {{Auth::user()->firstname}} {{Auth::user()->lastname}}</h1>
 
 	<?php
-		$id = Hotel::where('id_user', '=', Auth::user()->id)->pluck('id');
-		$id_type = Hotel::where('id_user', '=', Auth::user()->id)->pluck('id_type');
-		$name = Hotel::where('id_user', '=', Auth::user()->id)->pluck('name'); 
-		$address = Hotel::where('id_user', '=', Auth::user()->id)->pluck('address');
-		$lat = Hotel::where('id_user', '=', Auth::user()->id)->pluck('lat');
-		$long = Hotel::where('id_user', '=', Auth::user()->id)->pluck('long');
-		$phone = Hotel::where('id_user', '=', Auth::user()->id)->pluck('phone');
-		$pricelow = Hotel::where('id_user', '=', Auth::user()->id)->pluck('pricelow');
-		$pricehigh = Hotel::where('id_user', '=', Auth::user()->id)->pluck('pricehigh');
-		$priceavg = Hotel::where('id_user', '=', Auth::user()->id)->pluck('priceavg');
-		$stars = Hotel::where('id_user', '=', Auth::user()->id)->pluck('stars');
-		$overview = Hotel::where('id_user', '=', Auth::user()->id)->pluck('overview');
-		$photo1 = Hotel::where('id_user', '=', Auth::user()->id)->pluck('photo1');
-		$photo2 = Hotel::where('id_user', '=', Auth::user()->id)->pluck('photo2');
-		$photo3 = Hotel::where('id_user', '=', Auth::user()->id)->pluck('photo3');
-		$photo4 = Hotel::where('id_user', '=', Auth::user()->id)->pluck('photo4');
-		$photo5 = Hotel::where('id_user', '=', Auth::user()->id)->pluck('photo5');
-		$photo6 = Hotel::where('id_user', '=', Auth::user()->id)->pluck('photo6');
+		$id = Hotel::where('iduser', '=', Auth::user()->id)->pluck('id');
+		$idtype = Hotel::where('iduser', '=', Auth::user()->id)->pluck('idtype');
+		$name = Hotel::where('iduser', '=', Auth::user()->id)->pluck('name'); 
+		$address = Hotel::where('iduser', '=', Auth::user()->id)->pluck('address');
+		$lat = Hotel::where('iduser', '=', Auth::user()->id)->pluck('lat');
+		$long = Hotel::where('iduser', '=', Auth::user()->id)->pluck('long');
+		$phone = Hotel::where('iduser', '=', Auth::user()->id)->pluck('phone');
+		$pricelow = Hotel::where('iduser', '=', Auth::user()->id)->pluck('pls');
+		$pricehigh = Hotel::where('iduser', '=', Auth::user()->id)->pluck('phs');
+		$priceavg = Hotel::where('iduser', '=', Auth::user()->id)->pluck('avgp');
+		$stars = Hotel::where('iduser', '=', Auth::user()->id)->pluck('stars');
+		$email = Hotel::where('iduser', '=', Auth::user()->id)->pluck('email');
+		$overview = Hotel::where('iduser', '=', Auth::user()->id)->pluck('overview');
+		$photo1 = Hotel::where('iduser', '=', Auth::user()->id)->pluck('photo1');
+		$photo2 = Hotel::where('iduser', '=', Auth::user()->id)->pluck('photo2');
+		$photo3 = Hotel::where('iduser', '=', Auth::user()->id)->pluck('photo3');
+		$photo4 = Hotel::where('iduser', '=', Auth::user()->id)->pluck('photo4');
+		$photo5 = Hotel::where('iduser', '=', Auth::user()->id)->pluck('photo5');
+		$photo6 = Hotel::where('iduser', '=', Auth::user()->id)->pluck('photo6');
 	?>
 
 	<table class="table table-hover">
@@ -42,7 +41,7 @@
 		<tbody>
 			<tr>
 				<td>Category</td>
-				<td>{{$id_type}}</td>
+				<td>{{$idtype}}</td>
 			</tr>
 			<tr>
 				<td>Hotel name</td>

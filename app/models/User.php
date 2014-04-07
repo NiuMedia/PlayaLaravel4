@@ -53,7 +53,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
    		'lastname'=>'required|alpha|min:2',
    		'rol'=>'required|alpha|min:2',
    		'status'=>'required|alpha|min:2',
-   		'username'=>'required|alpha|min:2',
    		'email'=>'required|email|unique:users',
    		'password'=>'required|alpha_num|between:6,25|confirmed',
    		'password_confirmation'=>'required|alpha_num|between:6,25'
@@ -63,13 +62,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
    		'firstname'=>'required',
    		'lastname'=>'required',
    		'status'=>'required',
-   		'username'=>'required',
-   		'email'=>'required|email'
+   		'email'=>'required|email',
+   		'password'=>'required|alpha_num|between:6,25|confirmed',
+   		'password_confirmation'=>'required|alpha_num|between:6,25'
    	);
 
    	public static $rulespassword = array(
    		'password'=>'alpha_num|between:6,25|confirmed',
    		'password_confirmation'=>'alpha_num|between:6,25'
    	);
-
 }

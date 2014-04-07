@@ -38,6 +38,25 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
+                <li>{{ HTML::link('app/'. Auth::user()->rol . 's', 'Dashboard',array('class'=>'logout')) }}</li>
+                @if(Auth::user()->rol == 'hotel')
+                    <?php $id = Hotel::where('iduser', '=', Auth::user()->id)->pluck('id'); ?>
+                @elseif(Auth::user()->rol == 'beach')
+                    <?php $id = Beach::where('iduser', '=', Auth::user()->id)->pluck('id'); ?>
+                @elseif(Auth::user()->rol == 'nighlife')
+                    <?php $id = Nightlife::where('iduser', '=', Auth::user()->id)->pluck('id'); ?>
+                 @elseif(Auth::user()->rol == 'restaurant')
+                    <?php $id = Restaurant::where('iduser', '=', Auth::user()->id)->pluck('id'); ?>
+                 @elseif(Auth::user()->rol == 'shopping')
+                    <?php $id = Shopping::where('iduser', '=', Auth::user()->id)->pluck('id'); ?>
+                 @elseif(Auth::user()->rol == 'tour')
+                    <?php $id = Tour::where('iduser', '=', Auth::user()->id)->pluck('id'); ?>
+                 @elseif(Auth::user()->rol == 'transport')
+                    <?php $id = Transport::where('iduser', '=', Auth::user()->id)->pluck('id'); ?>
+                 @elseif(Auth::user()->rol == 'doctor')
+                    <?php $id = Doctor::where('iduser', '=', Auth::user()->id)->pluck('id'); ?>
+                @endif
+                <li>{{ HTML::link('app/'. Auth::user()->rol .'s/'. $id . '/edit', 'Edit',array('class'=>'logout')) }}</li>
                 <li>{{ HTML::link('users/logout', 'Logout',array('class'=>'logout')) }}</li>
               </ul>
             </div><!-- /.navbar-collapse -->

@@ -42,7 +42,8 @@
                 <li>{{ HTML::link('app/locations', 'Locations',array('class'=>'navbtn')) }}</li>
                 <li>{{ HTML::link('app/types', 'Types',array('class'=>'navbtn')) }}</li>
                 <li>{{ HTML::link('app/services', 'Services',array('class'=>'navbtn')) }}</li> -->
-                <li>{{ HTML::link('users/logout', 'Account',array('class'=>'logout')) }}</li>
+                <li>{{ HTML::link('app/users/' . Auth::user()->id , 'My account',array('class'=>'logout')) }}</li>
+                <li>{{ HTML::link('app/users/' . Auth::user()->id . '/edit', 'Edit my account',array('class'=>'logout')) }}</li>
                 <li>{{ HTML::link('users/logout', 'Logout',array('class'=>'logout')) }}</li>
               </ul>
             </div><!-- /.navbar-collapse -->
@@ -54,20 +55,21 @@
         <div id="sidebar">
             <ul>
                 <li>{{ HTML::link('app/users', 'Dashboard',array('class'=>'sidebarBtn', 'id'=>'dashboard')) }}</li>
-                <li>{{ HTML::link('app/users', 'Administrator',array('class'=>'sidebarBtn','id'=>'admin')) }}</li>
-                <li>{{ HTML::link('app/users', 'Beaches',array('class'=>'sidebarBtn','id'=>'beach')) }}</li>
-                <li>{{ HTML::link('app/users', 'Doctors',array('class'=>'sidebarBtn','id'=>'doc')) }}</li>
-                <li>{{ HTML::link('app/users', 'Events',array('class'=>'sidebarBtn','id'=>'event')) }}</li>
-                <li>{{ HTML::link('app/users', 'Hotels',array('class'=>'sidebarBtn','id'=>'hotel')) }}</li>
-                <li>{{ HTML::link('app/users', 'Nightlife',array('class'=>'sidebarBtn','id'=>'night')) }}</li>
-                <li>{{ HTML::link('app/users', 'Restaurant',array('class'=>'sidebarBtn','id'=>'restaurant')) }}</li>
-                <li>{{ HTML::link('app/users', 'Shopping',array('class'=>'sidebarBtn','id'=>'shop')) }}</li>
-                <li>{{ HTML::link('app/users', 'Tours',array('class'=>'sidebarBtn','id'=>'tour')) }}</li>
-                <li>{{ HTML::link('app/users', 'Transportation',array('class'=>'sidebarBtn','id'=>'transport')) }}</li>
-                <li>{{ HTML::link('app/users/create', '+ New User',array('class'=>'sidebarBtn')) }}</li>
-                <!--<li>{{ HTML::link('app/locations', 'Locations',array('class'=>'sidebarBtn')) }}</li>-->
-                <!--<li>{{ HTML::link('app/types', 'Types',array('class'=>'sidebarBtn')) }}</li>
-                <li>{{ HTML::link('app/services', 'Services',array('class'=>'sidebarBtn')) }}</li>-->
+                <li>{{ HTML::link('app/adminlist', 'Administrators',array('class'=>'sidebarBtn','id'=>'admin')) }}</li>
+                <li>{{ HTML::link('app/hotellist', 'Hotels',array('class'=>'sidebarBtn','id'=>'hotel')) }}</li>
+                <li>{{ HTML::link('app/restaurantlist', 'Restaurants',array('class'=>'sidebarBtn','id'=>'restaurant')) }}</li>
+                <li>{{ HTML::link('app/nightlifelist', 'Nightlifes',array('class'=>'sidebarBtn','id'=>'night')) }}</li>
+                <li>{{ HTML::link('app/shoppinglist', 'Shoppings',array('class'=>'sidebarBtn','id'=>'shop')) }}</li>
+                <li>{{ HTML::link('app/tourlist', 'Tours',array('class'=>'sidebarBtn','id'=>'tour')) }}</li>
+                <li>{{ HTML::link('app/beachlist', 'Beaches',array('class'=>'sidebarBtn','id'=>'beach')) }}</li>
+                <li>{{ HTML::link('app/eventlist', 'Events',array('class'=>'sidebarBtn','id'=>'event')) }}</li>
+                <li>{{ HTML::link('app/transportlist', 'Transportation',array('class'=>'sidebarBtn','id'=>'transport')) }}</li>
+                <li>{{ HTML::link('app/doctorlist', 'Doctors',array('class'=>'sidebarBtn','id'=>'doc')) }}</li>
+                <li>{{ HTML::link('app/users/create', 'New User',array('class'=>'sidebarBtn')) }}</li>
+                <li>{{ HTML::link('app/locations', 'Locations',array('class'=>'sidebarBtn')) }}</li>
+                <li>{{ HTML::link('app/types', 'Types',array('class'=>'sidebarBtn')) }}</li>
+                <li>{{ HTML::link('app/users', 'Active users',array('class'=>'sidebarBtn')) }}</li>
+                <li>{{ HTML::link('app/users', 'Inactive users',array('class'=>'sidebarBtn')) }}</li>
             </ul>
         </div>
         <!-- END LEFT SIDEBAR MENU --> 

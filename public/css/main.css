@@ -5,6 +5,7 @@ body {
 	background-position:center;*/
 	/*background-color: #FFFFFF;*/
 	/*background-color: #AFE1FA;*/
+	background-color: #AFE1FA;
 }
 
 .panel {
@@ -21,7 +22,6 @@ body {
 }
 #img-back{
 	width: 100%;
-	background-image: url("beach.jpg");
 	background-position: bottom;
 	position: fixed;
 	background-attachment:fixed;
@@ -221,4 +221,7 @@ background-color: #FFB0B0;
 	#footer-right{
 	text-align: left;
 	}
+}
+#info{
+	width: 33%;
 }

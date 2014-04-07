@@ -1,25 +1,29 @@
 <?php
 
-class UserController extends \BaseController {
+class UserController extends BaseController {
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
 
+	//se construyen las vistas y se crean reestricciones de las funciones para que solo sean vistas despues de la autentificacion.
+
 	public function __construct() {
       	$this->beforeFilter('csrf', array('on'=>'post'));
-      	$this->beforeFilter('auth', array('only'=>array('index', 'create', 'show', 'edit', 'destroy')));
+      	$this->beforeFilter('auth', array('only'=>array('index', 'show', 'create', 'edit', 'destroy'))); //filtro para proteger las vistas que no deben ser mostradas sin inicio de sesion
   	}
 
-  	protected $layout = "layouts.masterlog";
+  	protected $layout = "layouts.masterlog"; //se define el layout principal
 
-  	public function getLogin() {
+  	//vista para obtener el login
+	public function getLogin() {
       	$this->layout->content = View::make('users.login');
   	}
 
+  	//funciones para redireccionar segun los permisos de cada usuario
   	public function postSignin() {
-  		if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'superadmin'))) {
+  		if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'super'))) {
         	return Redirect::to('app/admin')->with('message', 'You are now logged in!');
     	}
       	elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'admin'))) {
@@ -35,7 +39,7 @@ class UserController extends \BaseController {
           	return Redirect::to('app/nightlifes')->with('message', 'You are now logged in!');
         }
         elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'beach'))) {
-          	return Redirect::to('app/beaches')->with('message', 'You are now logged in!');
+          	return Redirect::to('app/beachs')->with('message', 'You are now logged in!');
         }
         elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'tour'))) {
           	return Redirect::to('app/tours')->with('message', 'You are now logged in!');
@@ -46,7 +50,7 @@ class UserController extends \BaseController {
         elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'shopping'))) {
           	return Redirect::to('app/shoppings')->with('message', 'You are now logged in!');
         }
-        elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'transport'))) {
+        elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'transportation'))) {
           	return Redirect::to('app/transports')->with('message', 'You are now logged in!');
         }
         elseif (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password'), 'rol'=>'doctor'))) {
@@ -59,20 +63,13 @@ class UserController extends \BaseController {
     	}
  	}
 
-  	public function getDashboard() {
-     	$this->layout->content = View::make('users.dashboard');
-  	}
-
+  	//funcion para salir de la cuenta del sistema
   	public function getLogout() {
       	Auth::logout();
       	return Redirect::to('users/login')->with('message', 'Your are now logged out!');
   	}
 
-  	public function account()
-  	{
-  		return View::make('admin.account');
-  	}
-
+  	//se construye la pagina principal con todos los usuarios que han sido registrados
 	public function index()
   	{
     	$users = User::all();
@@ -85,6 +82,7 @@ class UserController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+	//se crean los usuarios
 	public function create()
 	{
 		$location_options = DB::table('locations')->orderBy('name', 'asc')->lists('name','id');
@@ -96,48 +94,45 @@ class UserController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+	//despues de crear los usuarios se guardan en la base de datos
 	public function store()
 	{
-		$validator = Validator::make(Input::all(), User::$rules);
+		$validator = Validator::make(Input::all(), User::$rules);//se comprueban que los campos que han sido completados, cumplan con las reglas que se encuentran en el modelo usuario para el llenado de los campos
  
    		if ($validator->passes()) {
-      // 		$user = new User;
-   			// $user->firstname = Input::get('firstname');
-   			// $user->lastname = Input::get('lastname');
-   			// $user->email = Input::get('email');
-      //     	$user->username = Input::get('username');
-   			// $user->password = Hash::make(Input::get('password'));
-   			// $user->rol = Input::get('rol');
-      //     	$user->status = Input::get('status');
-   			// $user->save();
    			$id = DB::table('users')->insertGetId(array('firstname' => Input::get('firstname'), 'lastname' => Input::get('lastname'),
-														'email' => Input::get('email'), 'username' => Input::get('username'),
-														'password' => Hash::make(Input::get('password')), 'rol' => Input::get('rol'),
+														'email' => Input::get('email'), 'password' => Hash::make(Input::get('password')), 'rol' => Input::get('rol'),
 														'status' => Input::get('status'),'idlocation' => Input::get('idlocation'), 'phone' => Input::get('phone')));
    			if(Input::get('rol') == 'hotel'){
-   				DB::table('hotels')->insert(array('id_user'=> $id));
+   				DB::table('hotels')->insert(array('iduser'=> $id));
    			}
    			elseif(Input::get('rol') == 'restaurant'){   			
-   				DB::table('restaurants')->insert(array('id_user'=> $id));
+   				DB::table('restaurants')->insert(array('iduser'=> $id));
    			}
    			elseif(Input::get('rol') == 'nightlife'){   			
-   				DB::table('nightlifes')->insert(array('id_user'=> $id));
+   				DB::table('nightlifes')->insert(array('iduser'=> $id));
    			}
    			elseif(Input::get('rol') == 'shopping'){
-				DB::table('shoppings')->insert(array('id_user'=> $id));
+				DB::table('shoppings')->insert(array('iduser'=> $id));
 			}
 			elseif(Input::get('rol') == 'tour'){
-				DB::table('tours')->insert(array('id_user'=> $id));
+				DB::table('tours')->insert(array('iduser'=> $id));
 			}
 			elseif(Input::get('rol') == 'beach'){
-				DB::table('beaches')->insert(array('id_user'=> $id));
+				DB::table('beaches')->insert(array('iduser'=> $id));
 			}
 			elseif(Input::get('rol') == 'event'){
-				DB::table('events')->insert(array('id_user'=> $id));
+				DB::table('events')->insert(array('iduser'=> $id));
 			}		
-			elseif(Input::get('rol') == 'transport'){
-				DB::table('transports')->insert(array('id_user'=> $id));
+			elseif(Input::get('rol') == 'transportation'){
+				DB::table('transportations')->insert(array('iduser'=> $id));
 			}
+			elseif(Input::get('rol') == 'doctor'){
+				DB::table('doctors')->insert(array('iduser'=> $id));
+			}
+			Mail::send('users.mails.welcome', array('firstname'=>Input::get('firstname')), function($message){
+   		      $message->to(Input::get('email'), Input::get('firstname').' '.Input::get('lastname'))->subject('Welcome to the Laravel 4 Auth App!');
+    });
  
    			return Redirect::to('app/users')->with('message', 'Successfully added');
    		} 
@@ -190,59 +185,65 @@ class UserController extends \BaseController {
 		if ($validator->passes()) {
       		$user = User::find($id);
       		if($user->rol == 'hotel'){
-				DB::table('hotels')->where('id_user', '=', $id)->delete();
+				DB::table('hotels')->where('iduser', '=', $id)->delete();
 			}
 			elseif($user->rol == 'restaurant'){
-				DB::table('restaurants')->where('id_user', '=', $id)->delete();
+				DB::table('restaurants')->where('iduser', '=', $id)->delete();
 			}
 			elseif($user->rol == 'nightlife'){
-				DB::table('nightlifes')->where('id_user', '=', $id)->delete();
+				DB::table('nightlifes')->where('iduser', '=', $id)->delete();
 			}
 			elseif($user->rol == 'shopping'){
-				DB::table('shoppings')->where('id_user', '=', $id)->delete();
+				DB::table('shoppings')->where('iduser', '=', $id)->delete();
 			}
 			elseif($user->rol == 'tour'){
-				DB::table('tours')->where('id_user', '=', $id)->delete();
+				DB::table('tours')->where('iduser', '=', $id)->delete();
 			}
 			elseif($user->rol == 'beach'){
-				DB::table('beaches')->where('id_user', '=', $id)->delete();
+				DB::table('beaches')->where('iduser', '=', $id)->delete();
 			}
 			elseif($user->rol == 'event'){
-				DB::table('events')->where('id_user', '=', $id)->delete();
+				DB::table('events')->where('iduser', '=', $id)->delete();
 			}
-			elseif($user->rol == 'transport'){
-				DB::table('transports')->where('id_user', '=', $id)->delete();
+			elseif($user->rol == 'transportation'){
+				DB::table('transportations')->where('iduser', '=', $id)->delete();
+			}
+			elseif($user->rol == 'doctor'){
+				DB::table('doctors')->where('iduser', '=', $id)->delete();
 			}
    			$user->firstname = Input::get('firstname');
    			$user->lastname = Input::get('lastname');
    			$user->email = Input::get('email');
-          	$user->username = Input::get('username');
           	$user->status = Input::get('status');
           	$user->idlocation = Input::get('idlocation');
+          	$user->password = Hash::make(Input::get('password'));
           	$user->phone = Input::get('phone');
           	if(Input::get('rol') == 'hotel'){
-   				DB::table('hotels')->insert(array('id_user'=> $id));
+   				DB::table('hotels')->insert(array('iduser'=> $id));
    			}
    			elseif(Input::get('rol') == 'restaurant'){   			
-   				DB::table('restaurants')->insert(array('id_user'=> $id));
+   				DB::table('restaurants')->insert(array('iduser'=> $id));
    			}
    			elseif(Input::get('rol') == 'nightlife'){   			
-   				DB::table('nightlifes')->insert(array('id_user'=> $id));
+   				DB::table('nightlifes')->insert(array('iduser'=> $id));
    			}
    			elseif($user->rol == 'shopping'){
-				DB::table('shoppings')->insert(array('id_user'=> $id));
+				DB::table('shoppings')->insert(array('iduser'=> $id));
 			}
 			elseif($user->rol == 'tour'){
-				DB::table('tours')->insert(array('id_user'=> $id));
+				DB::table('tours')->insert(array('iduser'=> $id));
 			}
 			elseif($user->rol == 'beach'){
-				DB::table('beaches')->insert(array('id_user'=> $id));
+				DB::table('beaches')->insert(array('iduser'=> $id));
 			}
 			elseif($user->rol == 'event'){
-				DB::table('events')->insert(array('id_user'=> $id));
+				DB::table('events')->insert(array('iduser'=> $id));
 			}		
-			elseif($user->rol == 'transport'){
-				DB::table('transports')->insert(array('id_user'=> $id));
+			elseif($user->rol == 'transportation'){
+				DB::table('transportation')->insert(array('iduser'=> $id));
+			}
+			elseif($user->rol == 'doctor'){
+				DB::table('doctors')->insert(array('iduser'=> $id));
 			}
    			$user->save();
  
@@ -264,28 +265,31 @@ class UserController extends \BaseController {
 	{
 		$user = User::find($id);
 		if($user->rol == 'hotel'){
-			DB::table('hotels')->where('id_user', '=', $id)->delete();
+			DB::table('hotels')->where('iduser', '=', $id)->delete();
 		}
 		elseif($user->rol == 'restaurant'){
-			DB::table('restaurants')->where('id_user', '=', $id)->delete();
+			DB::table('restaurants')->where('iduser', '=', $id)->delete();
 		}
 		elseif($user->rol == 'nightlife'){
-			DB::table('nightlifes')->where('id_user', '=', $id)->delete();
+			DB::table('nightlifes')->where('iduser', '=', $id)->delete();
 		}
 		elseif($user->rol == 'shopping'){
-			DB::table('shoppings')->where('id_user', '=', $id)->delete();
+			DB::table('shoppings')->where('iduser', '=', $id)->delete();
 		}
 		elseif($user->rol == 'tour'){
-			DB::table('tours')->where('id_user', '=', $id)->delete();
+			DB::table('tours')->where('iduser', '=', $id)->delete();
 		}
 		elseif($user->rol == 'beach'){
-			DB::table('beaches')->where('id_user', '=', $id)->delete();
+			DB::table('beaches')->where('iduser', '=', $id)->delete();
 		}
 		elseif($user->rol == 'event'){
-			DB::table('events')->where('id_user', '=', $id)->delete();
+			DB::table('events')->where('iduser', '=', $id)->delete();
 		}
-		elseif($user->rol == 'transport'){
-			DB::table('transports')->where('id_user', '=', $id)->delete();
+		elseif($user->rol == 'transportation'){
+			DB::table('transportations')->where('iduser', '=', $id)->delete();
+		}
+		elseif($user->rol == 'doctor'){
+			DB::table('doctors')->where('iduser', '=', $id)->delete();
 		}
 
 		$user->delete();

@@ -6,29 +6,38 @@
 @stop
 
 @section('content')
-
-	<div class="jumbotron" align="center">
-		{{ Form::open(array('url'=>'login', 'class'=>'form-signin')) }}
-   			<h2 align="center">Login</h2>
-   			<div class="form-group">
-            	{{Form::label('username', 'User Name', array('class' => 'col-sm-2 control-label'))}}
-            	<div class="col-sm-10">
-            		{{ Form::text('username', null, array('class' => 'form-control', 'style' => 'width: 100%;')) }}
-            	</div>
-            </div><br/>
-
-            <div class="form-group">
-            	{{Form::label('password', 'Password', array('class' => 'col-sm-2 control-label'))}}
-            	<div class="col-sm-10">
-            		{{ Form::password('password', array('class' => 'form-control', 'style' => 'width: 100%;')) }}
-            	</div>
+<div class="row">
+    <div class="col-md-6">
+        {{ HTML::image('icon.png', $alt = null, $attributes = array('id'=>'img-login') ) }}
+    </div>
+    <div class="col-md-6">
+        <div class="jumbotron" id="jumbo-login" align="center">
+        {{ Form::open(array('url'=>'users/signin', 'class'=>'form-signin')) }}
+            <h2 align="center">Login</h2>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    {{Form::label('username', 'User Name')}}
+                </div>
+                <div class="col-sm-8">
+                    {{ Form::text('username', null, array('class' => 'form-control')) }}
+                </div>
             </div>
 
-            <div class="form-group" align="center">
-            	<div class="col-sm-offset-2" >
- 	   				{{ Form::submit('Login', array('class'=>'btn btn-large btn-primary', 'style' => 'width: 50%; align:center; height:50px; margin-top:30px'))}}
- 	   			</div>
- 	   		</div>
-		{{ Form::close() }}
-	</div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    {{Form::label('password', 'Password')}}
+                </div>
+                <div class="col-sm-8">
+                    {{ Form::password('password', array('class' => 'form-control')) }}
+                </div>
+            </div>
+
+            <div class="form-group row" align="center">
+                    {{ Form::submit('Login', array('class'=>'btn btn-lg btn-primary', 'id'=>'btn-login')) }}
+            </div>
+        {{ Form::close() }}
+    </div>
+    </div>
+</div>
+
 @stop

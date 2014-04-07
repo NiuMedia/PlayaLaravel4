@@ -1,4 +1,4 @@
-@extends('layouts.masterview')
+@extends('layouts.masterdashadmin')
 
 @section('title')
 @parent
@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-            	{{ Form::submit('Submit', array('class'=>'btn btn-large btn-primary btn-block','id'=>'btn-register'))}}
+            	{{ Form::submit('Edit', array('class'=>'btn btn-large btn-primary btn-block','id'=>'btn-register'))}}
         	</div>
             <div class="col-md-4"></div>
         </div>

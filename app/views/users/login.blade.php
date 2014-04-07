@@ -7,7 +7,9 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        {{ HTML::image('img/icon.png', $alt = null, $attributes = array('id'=>'img-login') ) }}
+    </div>
     <div class="col-md-6">
         <div class="jumbotron" id="jumbo-login" align="center">
         {{ Form::open(array('url'=>'users/signin', 'class'=>'form-signin')) }}
@@ -34,9 +36,8 @@
                     {{ Form::submit('Login', array('class'=>'btn btn-lg btn-primary', 'id'=>'btn-login')) }}
             </div>
         {{ Form::close() }}
-        </div>
     </div>
-    <div class="col-md-3"></div>
+    </div>
 </div>
-	
+
 @stop

@@ -56,7 +56,7 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'unix_socket' => '/Applications/xampp/xamppfiles/var/mysql/mysql.sock',
-			'database'  => 'playa',
+			'database'  => 'playaapp',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
